@@ -61,6 +61,8 @@ const tracks = [
     }
 ];
 
+
+
 export const Tracks = () => {
     return (
         <section className="relative min-h-screen bg-asphalt text-white py-24 overflow-hidden font-display">
@@ -87,85 +89,89 @@ export const Tracks = () => {
                 {/* The HUD Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {tracks.map((track) => (
-                        <div
-                            key={track.id}
-                            className="group rounded-xl relative h-80 w-full transition-transform duration-300 hover:-translate-y-2"
-                        >
+                        <TrackCard key={track.id} track={track} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
 
-                            {/* 1. The HUD Shape Container (Cut Corner) */}
-                            <div className="rounded-xl absolute inset-0 clip-hud bg-[#121215] border-t border-l border-r border-white/20 group-hover:border-white/50 transition-colors"></div>
+const TrackCard = ({ track }: { track: any }) => {
+    return (
+        <div
+            className="group rounded-xl relative h-80 w-full transition-transform duration-300 hover:-translate-y-2"
+        >
 
-                            {/* 2. The Glowing Border (Only appears on hover) */}
-                            <div className={`absolute rounded-xl inset-0 clip-hud border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${track.color}`}></div>
+            {/* 1. The HUD Shape Container (Cut Corner) */}
+            <div className="rounded-xl absolute inset-0 clip-hud bg-[#121215] border-t border-l border-r border-white/20 group-hover:border-white/50 transition-colors"></div>
 
-                            {/* 3. Content Layout */}
-                            <div className="relative h-full p-8 flex flex-col justify-between z-10">
+            {/* 2. The Glowing Border (Only appears on hover, ALWAYS visible on mobile) */}
+            <div className={`absolute rounded-xl inset-0 clip-hud border-2 transition-opacity duration-300 ${track.color} opacity-100 md:opacity-0 md:group-hover:opacity-100`}></div>
 
-                                {/* Top Row: ID & Animated Icon */}
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <div className="font-mono text-4xl font-bold text-white/10 group-hover:text-white/30 transition-colors">
-                                            {track.id}
-                                        </div>
-                                        <div className={`h-1 w-12 mt-2 ${track.accent}`}></div>
-                                    </div>
+            {/* 3. Content Layout */}
+            <div className="relative h-full p-8 flex flex-col justify-between z-10">
 
-                                    {/* Animated SVG Circuit */}
-                                    <div className="relative w-24 h-24 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <svg viewBox="0 0 200 160" className="w-full h-full drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-                                            {/* Static Path */}
-                                            <path d={track.path} fill="none" stroke="#333" strokeWidth="4" />
-                                            {/* Animated Path */}
-                                            <path
-                                                d={track.path}
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                className={`${track.color.split(' ')[0].replace('border-', 'text-')} stroke-dasharray-1000 stroke-dashoffset-1000 animate-track-draw`}
-                                            />
-                                        </svg>
-                                    </div>
-                                </div>
+                {/* Top Row: ID & Animated Icon */}
+                <div className="flex justify-between items-start">
+                    <div>
+                        <div className={`font-mono text-4xl font-bold transition-colors text-white/30 md:text-white/10 md:group-hover:text-white/30`}>
+                            {track.id}
+                        </div>
+                        <div className={`h-1 w-12 mt-2 ${track.accent}`}></div>
+                    </div>
 
-                                {/* Middle: Text Info */}
-                                <div>
-                                    <h3 className="text-3xl font-black italic uppercase tracking-tight mb-1 group-hover:text-white transition-colors text-gray-200">
-                                        {track.title}
-                                    </h3>
-                                    <div className="text-xs font-mono text-neon-cyan mb-3 tracking-widest">{track.subtitle}</div>
-                                    <p className="text-sm text-gray-500 leading-relaxed max-w-sm group-hover:text-gray-400">
-                                        {track.desc}
-                                    </p>
-                                </div>
+                    {/* Animated SVG Circuit (Always visible on mobile) */}
+                    <div className={`relative w-24 h-24 transition-opacity opacity-100 md:opacity-50 md:group-hover:opacity-100`}>
+                        <svg viewBox="0 0 200 160" className="w-full h-full drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                            {/* Static Path */}
+                            <path d={track.path} fill="none" stroke="#333" strokeWidth="4" />
+                            {/* Animated Path */}
+                            <path
+                                d={track.path}
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                className={`${track.color.split(' ')[0].replace('border-', 'text-')} stroke-dasharray-1000 stroke-dashoffset-1000 animate-track-draw`}
+                            />
+                        </svg>
+                    </div>
+                </div>
 
-                                {/* Bottom: Telemetry Data */}
-                                <div className="mt-4 pt-4 border-t border-white/5 grid grid-cols-2 gap-4 font-mono text-xs mr-4">
-                                    {track.specs.map((spec, i) => (
-                                        <div key={i} className="flex justify-between items-center bg-black/30 px-2 py-1 rounded-md">
-                                            <span className="text-gray-600">{spec.label}</span>
-                                            <span className={`font-bold ${spec.color}`}>{spec.value}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                {/* Middle: Text Info */}
+                <div>
+                    <h3 className="text-3xl font-black italic uppercase tracking-tight mb-1 group-hover:text-white transition-colors text-gray-200">
+                        {track.title}
+                    </h3>
+                    <div className="text-xs font-mono text-neon-cyan mb-3 tracking-widest">{track.subtitle}</div>
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-sm group-hover:text-gray-400">
+                        {track.desc}
+                    </p>
+                </div>
 
-                            </div>
-
-                            {/* 4. Decorative Corner Elements (The "Bolts") */}
-                            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/10 group-hover:border-neon-cyan transition-colors"></div>
-                            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-white/10 group-hover:border-neon-cyan transition-colors"></div>
-
-                            {/* 5. Enter Button (Appears on Hover) */}
-                            {/* <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
-                                <button className={`p-3 rounded-full ${track.accent} text-black font-bold shadow-lg hover:scale-110 transition-transform`}>
-                                    <span className="material-icons text-lg">arrow_forward</span>
-                                </button>
-                            </div> */}
-
+                {/* Bottom: Telemetry Data */}
+                <div className="mt-4 pt-4 border-t border-white/5 grid grid-cols-2 gap-4 font-mono text-xs mr-4">
+                    {track.specs.map((spec: any, i: number) => (
+                        <div key={i} className="flex justify-between items-center bg-black/30 px-2 py-1 rounded-md">
+                            <span className="text-gray-600">{spec.label}</span>
+                            <span className={`font-bold ${spec.color}`}>{spec.value}</span>
                         </div>
                     ))}
                 </div>
 
             </div>
-        </section>
+
+            {/* 4. Decorative Corner Elements (The "Bolts") */}
+            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/10 group-hover:border-neon-cyan transition-colors"></div>
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-white/10 group-hover:border-neon-cyan transition-colors"></div>
+
+            {/* 5. Enter Button (Appears on Hover) */}
+            {/* <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
+                                <button className={`p-3 rounded-full ${track.accent} text-black font-bold shadow-lg hover:scale-110 transition-transform`}>
+                                    <span className="material-icons text-lg">arrow_forward</span>
+                                </button>
+                            </div> */}
+
+        </div>
     );
 };

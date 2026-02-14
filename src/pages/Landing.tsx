@@ -130,18 +130,19 @@ export const Landing = () => {
 
                     {/* Button */}
                     <Link href="/tracks">
-                        <button className="relative w-32 h-32 rounded-full bg-gradient-to-b from-gray-800 to-black border-4 border-gray-700 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center transform transition-all duration-200 active:scale-95 group-hover:border-primary group-hover:shadow-[0_0_80px_rgba(255,30,0,0.6)] overflow-hidden">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <span className="material-icons text-4xl text-white mb-1 drop-shadow-md group-hover:text-primary transition-colors">rocket_launch</span>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">Launch</span>
+                        <button className="relative w-32 h-32 rounded-full bg-gradient-to-b from-gray-800 to-black border-4 border-gray-700 md:border-gray-700 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center transform transition-all duration-200 active:scale-95 group-hover:border-primary group-hover:shadow-[0_0_80px_rgba(255,30,0,0.6)] border-primary shadow-[0_0_80px_rgba(255,30,0,0.6)] md:shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <span className="material-icons text-4xl text-white mb-1 drop-shadow-md text-primary md:text-white group-hover:text-primary transition-colors">rocket_launch</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-white/60 text-white md:text-white/60 group-hover:text-white transition-colors">Launch</span>
                         </button>
                     </Link>
 
+
                     {/* Decorative connection lines */}
-                    <div className="hidden md:block absolute top-1/2 left-[120%] w-32 h-[1px] bg-gradient-to-r from-white/20 to-transparent">
+                    <div className="absolute top-1/2 left-[110%] w-16 md:w-32 h-[1px] bg-gradient-to-r from-white/20 to-transparent block">
                         <span className="absolute -top-1.5 -left-1 w-3 h-3 bg-primary rounded-full animate-ping"></span>
                     </div>
-                    <div className="hidden md:block absolute top-1/2 right-[120%] w-32 h-[1px] bg-gradient-to-l from-white/20 to-transparent">
+                    <div className="absolute top-1/2 right-[110%] w-16 md:w-32 h-[1px] bg-gradient-to-l from-white/20 to-transparent block">
                         <span className="absolute -top-1.5 -right-1 w-3 h-3 bg-primary rounded-full animate-ping"></span>
                     </div>
                 </div>

@@ -54,7 +54,7 @@ export const PitCrew = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6">
 
                 {/* Header */}
-                <div className="mb-20 flex flex-col md:flex-row justify-between items-end border-b border-white/10 pb-8">
+                <div className="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-8">
                     <div>
                         <div className="flex items-center gap-3 mb-2">
                             <span className="w-2 h-2 bg-f1-red rounded-full animate-ping"></span>
@@ -72,8 +72,8 @@ export const PitCrew = () => {
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-4 py-1.5 rounded text-xs font-mono uppercase tracking-wider border transition-all duration-300 ${activeCategory === cat
-                                        ? 'bg-white text-black border-white'
-                                        : 'bg-transparent text-gray-500 border-white/10 hover:border-white/50 hover:text-white'
+                                    ? 'bg-white text-black border-white'
+                                    : 'bg-transparent text-gray-500 border-white/10 hover:border-white/50 hover:text-white'
                                     }`}
                             >
                                 {cat}
@@ -100,16 +100,16 @@ const CrewCard = ({ member, index }: { member: any, index: number }) => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative h-[450px] bg-carbon border border-white/10 rounded-xl overflow-hidden hover:border-f1-red/50 transition-colors duration-500"
+            className={`group relative h-[450px] bg-carbon border border-white/10 rounded-xl overflow-hidden transition-colors duration-500 hover:border-f1-red/50`}
         >
             {/* Image Background */}
             <div className="absolute inset-0 z-0">
                 <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+                    className={`w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-110 grayscale-0 md:grayscale md:group-hover:grayscale-0`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+                <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-500 opacity-90 group-hover:opacity-60`}></div>
             </div>
 
             {/* Content Overlay */}
@@ -128,9 +128,9 @@ const CrewCard = ({ member, index }: { member: any, index: number }) => {
                     <h3 className="text-3xl font-black italic uppercase text-white leading-none mb-4">{member.name}</h3>
                 </div>
 
-                {/* Stats Panel (Reveals on Hover) */}
-                <div className="overflow-hidden h-0 group-hover:h-32 transition-all duration-500 ease-out border-t border-white/10 pt-0 group-hover:pt-4">
-                    <div className="space-y-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                {/* Stats Panel (Reveals on Hover, HIDDEN on Mobile) */}
+                <div className={`hidden md:block overflow-hidden transition-all duration-500 ease-out border-t border-white/10 h-0 pt-0 group-hover:h-32 group-hover:pt-4`}>
+                    <div className={`space-y-3 transition-opacity duration-700 delay-100 opacity-0 group-hover:opacity-100`}>
                         <StatBar label="EXP" value={member.stats.experience} />
                         <StatBar label="CALM" value={member.stats.calm} />
                         <StatBar label="PACE" value={member.stats.speed} />

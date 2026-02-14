@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+
+
 export const Prizes = () => {
     return (
         <section className="relative min-h-screen bg-asphalt text-white py-24 overflow-hidden font-display selection:bg-neon-cyan selection:text-black">
@@ -111,8 +113,8 @@ const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, 
 
                 {/* 3. The Top-Down Car */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center z-10">
-                    {/* Glow behind car - Increased opacity for visibility */}
-                    <div className={`absolute w-32 h-64 ${glowBg} blur-[80px] opacity-40 group-hover:opacity-60 transition-opacity duration-500`}></div>
+                    {/* Glow behind car - Increased opacity for visibility, always visible on click or hover */}
+                    <div className={`absolute w-32 h-64 ${glowBg} blur-[80px] transition-opacity duration-500 opacity-40 group-hover:opacity-60`}></div>
 
                     <motion.img
                         src={carImage}
@@ -120,6 +122,7 @@ const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, 
                         className="w-40 md:w-48 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] z-20"
                         initial={{ scale: 0.9 }}
                         whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 1.05 }} // Added tap interaction for mobile
                         transition={{ duration: 0.4 }}
                         // Fallback placeholder
                         onError={(e: any) => {
