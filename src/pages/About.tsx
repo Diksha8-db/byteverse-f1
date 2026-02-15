@@ -18,7 +18,7 @@ export const About = () => {
                 >
 
                     {/* Header (F1 Style) */}
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-20 pb-8 border-b border-white/10 relative">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-8 border-b border-white/10 relative">
                         <div>
                             <div className="flex items-center gap-3 mb-2">
                                 <div className="w-2 h-2 bg-f1-red rounded-full animate-pulse"></div>

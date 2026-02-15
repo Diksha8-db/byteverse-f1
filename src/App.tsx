@@ -10,6 +10,7 @@ import { Prizes } from './pages/Prizes';
 import { PitCrew } from './pages/PitCrew';
 import { About } from './pages/About';
 import { Gallery } from './pages/Gallery';
+import { Sponsors } from './pages/Sponsors';
 
 function App() {
   const [location] = useLocation();
@@ -38,6 +39,7 @@ function App() {
             <Route path="/pit-crew" component={PitCrew} />
             <Route path="/about" component={About} />
             <Route path="/gallery" component={Gallery} />
+            <Route path="/sponsors" component={Sponsors} />
 
             {/* Fallback 404 */}
             <Route>

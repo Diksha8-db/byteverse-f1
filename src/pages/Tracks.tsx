@@ -115,7 +115,7 @@ const TrackCard = ({ track }: { track: any }) => {
                 {/* Top Row: ID & Animated Icon */}
                 <div className="flex justify-between items-start">
                     <div>
-                        <div className={`font-mono text-4xl font-bold transition-colors text-white/30 md:text-white/10 md:group-hover:text-white/30`}>
+                        <div className={`font-mono text-4xl font-bold transition-colors text-white/30 md:text-white/10 md:group-hover:text-white/50`}>
                             {track.id}
                         </div>
                         <div className={`h-1 w-12 mt-2 ${track.accent}`}></div>

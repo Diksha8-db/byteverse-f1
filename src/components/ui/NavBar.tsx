@@ -27,6 +27,9 @@ export const NavBar = () => {
             <Link href="/about" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/about' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 About
             </Link>
+            <Link href="/sponsors" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-primary/20 rounded-xl border border-primary/20 hover:border-primary/50 text-white' : 'px-5 py-2 text-sm rounded-full border border-primary/30 hover:bg-primary/20 text-primary hover:text-white'} ${location === '/sponsors' ? (mobile ? 'bg-primary/20 border-primary' : 'bg-primary/20') : ''}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+                Sponsors
+            </Link>
         </>
     );
 
