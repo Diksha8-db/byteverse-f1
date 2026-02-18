@@ -54,9 +54,9 @@ export const PitCrew = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6">
 
                 {/* Header */}
-                <div className="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-8">
-                    <div>
-                        <div className="flex items-center gap-3 mb-2">
+                <div className="mb-20 flex flex-col md:flex-row justify-between items-center md:items-end border-b border-white/10 pb-8 text-center md:text-left">
+                    <div className="mb-6 md:mb-0">
+                        <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
                             <span className="w-2 h-2 bg-f1-red rounded-full animate-ping"></span>
                             <span className="text-f1-red font-mono text-xs tracking-[0.3em] uppercase">Team Personnel</span>
                         </div>

@@ -120,14 +120,14 @@ export const Schedule = () => {
             <main className="relative z-30 max-w-7xl mx-auto px-6">
 
                 {/* Header - Pit Board Style */}
-                <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-white/10 pb-6 relative z-30">
-                    <div className="w-full md:w-auto text-left">
+                <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-16 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
+                    <div className="w-full md:w-auto mb-6 md:mb-0">
                         <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1">OFFICIAL TIMING</div>
                         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
                             Race <span className="text-stroke-white text-transparent">Schedule</span>
                         </h1>
                     </div>
-                    <div className="w-full md:w-auto text-right mt-6 md:mt-0 flex flex-col items-end">
+                    <div className="w-full md:w-auto flex flex-col items-center md:items-end">
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
                     </div>

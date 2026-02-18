@@ -9,25 +9,25 @@ export const NavBar = () => {
 
     const NavLinks = ({ mobile = false }) => (
         <>
-            <Link href="/tracks" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/tracks' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/tracks" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/tracks' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Tracks
             </Link>
-            <Link href="/schedule" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/schedule' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/schedule" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/schedule' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Schedule
             </Link>
-            <Link href="/prizes" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/prizes' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/prizes" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/prizes' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Prizes
             </Link>
-            <Link href="/pit-crew" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/pit-crew' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/pit-crew" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/pit-crew' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Pit Crew
             </Link>
-            <Link href="/gallery" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/gallery' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/gallery" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/gallery' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Gallery
             </Link>
-            <Link href="/about" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-5 py-2 text-sm rounded-full'} ${location === '/about' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/about" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/about' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 About
             </Link>
-            <Link href="/sponsors" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-primary/20 rounded-xl border border-primary/20 hover:border-primary/50 text-white' : 'px-5 py-2 text-sm rounded-full border border-primary/30 hover:bg-primary/20 text-primary hover:text-white'} ${location === '/sponsors' ? (mobile ? 'bg-primary/20 border-primary' : 'bg-primary/20') : ''}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/sponsors" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-primary/20 rounded-xl border border-primary/20 hover:border-primary/50 text-white' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full border border-primary/30 hover:bg-primary/20 text-primary hover:text-white'} ${location === '/sponsors' ? (mobile ? 'bg-primary/20 border-primary' : 'bg-primary/20') : ''}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Sponsors
             </Link>
         </>
@@ -35,7 +35,7 @@ export const NavBar = () => {
 
     return (
         <nav className="fixed top-4 md:top-6 left-0 right-0 z-50 flex flex-col items-center px-4 pointer-events-none">
-            <div className="bg-carbon/80 backdrop-blur-md border border-white/10 rounded-full py-2 px-4 md:py-3 md:px-6 flex items-center justify-between pointer-events-auto shadow-2xl shadow-black/50 w-full md:w-auto gap-4 md:gap-4 lg:gap-8 relative z-50">
+            <div className="bg-carbon/80 backdrop-blur-md border border-white/10 rounded-full py-2 px-4 md:py-3 md:px-6 flex items-center justify-between pointer-events-auto shadow-2xl shadow-black/50 w-full lg:w-auto gap-4 md:gap-4 lg:gap-4 xl:gap-8 relative z-50">
 
                 {/* Logo */}
                 <Link href="/" className="text-lg md:text-xl font-bold tracking-tighter text-white flex items-center gap-2 cursor-pointer whitespace-nowrap">
@@ -44,19 +44,19 @@ export const NavBar = () => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
+                <div className="hidden lg:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
                     <NavLinks />
                 </div>
 
                 {/* Login & Mobile Toggle */}
                 <div className="flex items-center gap-4">
-                    <Link href="/login" className="hidden md:block text-primary hover:text-white transition-colors text-sm font-bold uppercase tracking-widest border-l border-white/10 pl-6 cursor-pointer">
+                    <Link href="/login" className="hidden lg:block text-primary hover:text-white transition-colors text-sm font-bold uppercase tracking-widest border-l border-white/10 pl-6 cursor-pointer">
                         Login
                     </Link>
 
                     {/* Mobile Hamburger */}
                     <button
-                        className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                        className="lg:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
                         onClick={toggleMenu}
                     >
                         <span className="material-icons">{isMobileMenuOpen ? 'close' : 'menu'}</span>

@@ -15,9 +15,9 @@ export const Prizes = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
 
                 {/* 2. Header */}
-                <div className="w-full flex flex-col md:flex-row items-end justify-between mb-24 border-b border-white/10 pb-6 relative z-30">
-                    <div className="w-full md:w-auto text-left">
-                        <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center gap-2">
+                <div className="w-full flex flex-col md:flex-row items-center md:items-end justify-between mb-24 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
+                    <div className="w-full md:w-auto mb-6 md:mb-0">
+                        <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
                             <span className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></span>
                             PODIUM: CONSTRUCTORS
                         </div>
@@ -26,7 +26,7 @@ export const Prizes = () => {
                         </h1>
                     </div>
 
-                    <div className="w-full md:w-auto text-right mt-6 md:mt-0 flex flex-col items-end">
+                    <div className="w-full md:w-auto flex flex-col items-center md:items-end">
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
                     </div>

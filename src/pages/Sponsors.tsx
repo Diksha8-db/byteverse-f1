@@ -33,20 +33,23 @@ export const Sponsors = () => {
                     </div>
 
                     {/* Main Title */}
-                    <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter uppercase mb-2">
+                    {/* Main Title */}
+                    <h1 className="w-full text-center mx-auto text-5xl md:text-8xl lg:text-9xl font-black italic tracking-tighter uppercase mb-2 leading-none">
                         <span className="text-white block">BYTEVERSE</span>
                         <span className="text-stroke-white text-transparent block opacity-50">2026</span>
                     </h1>
 
                     {/* Subtitle */}
-                    <div className="text-xl md:text-3xl font-bold text-primary tracking-widest uppercase mb-8">
+                    <div className="w-full text-center mx-auto text-xl md:text-3xl font-bold text-primary tracking-widest uppercase mb-8 leading-tight">
                         NIT Patna’s Premier Tech Hackathon
                     </div>
 
                     {/* Tagline */}
-                    <p className="text-lg md:text-xl text-gray-400 font-mono max-w-2xl mx-auto mb-12 border-l-4 border-primary pl-6 text-left md:text-center md:border-l-0 md:pl-0">
+                    <p className="w-full text-center mx-auto text-lg md:text-xl text-gray-400 font-mono max-w-2xl mb-12">
                         Igniting Innovation. Empowering Builders.
                     </p>
+
+
 
                     {/* Date & Venue */}
                     <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 border-t border-white/10 pt-12">

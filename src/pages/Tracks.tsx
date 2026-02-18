@@ -73,8 +73,8 @@ export const Tracks = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
                 {/* Header - Pit Board Style */}
-                <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-white/10 pb-6">
-                    <div>
+                <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-16 border-b border-white/10 pb-6 text-center md:text-left">
+                    <div className="mb-4 md:mb-0">
                         <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1">SECTOR: CLASSIFIED</div>
                         <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
                             Track <span className="text-stroke-white text-transparent">Selection</span>

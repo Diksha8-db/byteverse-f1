@@ -94,7 +94,7 @@ export const Landing = () => {
 
 
             {/* Main Hero Content - Reveals after lights out */}
-            <main className={`relative z-20 flex-grow flex flex-col items-center justify-center text-center px-6 pt-24 md:pt-28 pb-32 max-w-7xl mx-auto w-full transition-all duration-1000 transform ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <main className={`relative z-20 flex-grow flex flex-col items-center justify-center text-center px-6 pt-16 md:pt-20 pb-32 max-w-7xl mx-auto w-full transition-all duration-1000 transform ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
                 {/* Official Season Tag */}
                 <div className="mt-2 mb-1 inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
@@ -107,14 +107,14 @@ export const Landing = () => {
                 </div>
 
                 {/* Headline */}
-                <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.85] mb-8 drop-shadow-2xl italic uppercase transform skew-x-[-2deg]">
+                <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black tracking-tighter leading-[0.85] mb-8 drop-shadow-2xl italic uppercase transform skew-x-[-2deg]">
                     <span className="block text-white">LIGHTS OUT</span>
                     <span className="block text-stroke-white text-transparent opacity-80 decoration-slice">AND AWAY</span>
                     <span className="block text-primary animate-pulse-glow">WE CODE</span>
                 </h1>
 
                 {/* Subtext */}
-                <p className="text-lg md:text-xl text-cyan-code/90 font-mono tracking-widest max-w-2xl mx-auto mb-16 uppercase border-l-2 border-primary pl-4 text-left md:text-center md:border-l-0 md:pl-0">
+                <p className="text-lg md:text-xl text-cyan-code/90 font-mono tracking-widest max-w-2xl mx-auto mb-16 uppercase text-center">
                     ByteVerse: The NIT Patna Grand Prix of Innovation
                 </p>
 
@@ -168,7 +168,7 @@ export const Landing = () => {
                             <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1">T-Minus</span>
                             <div className="flex items-center gap-2 font-mono text-neon-cyan">
                                 <span className="text-lg md:text-xl font-bold">
-                                    {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}
+                                    {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                                 </span>
                             </div>
                         </div>

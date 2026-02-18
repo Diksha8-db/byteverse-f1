@@ -30,9 +30,9 @@ export const Gallery = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6">
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-white/10">
-                    <div>
-                        <div className="flex items-center gap-2 mb-2">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 pb-8 border-b border-white/10 text-center md:text-left">
+                    <div className="mb-6 md:mb-0">
+                        <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
                             <span className="material-icons text-f1-red text-sm animate-pulse">videocam</span>
                             <span className="font-mono text-xs text-f1-red uppercase tracking-widest">Media Centre</span>
                         </div>

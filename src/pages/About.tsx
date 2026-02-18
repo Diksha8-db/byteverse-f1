@@ -10,7 +10,7 @@ export const About = () => {
                 <div className="absolute inset-0 scanlines"></div>
             </div>
 
-            <main className="relative z-10 max-w-5xl mx-auto px-6">
+            <main className="relative z-10 max-w-7xl mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -67,8 +67,8 @@ export const About = () => {
 
                     {/* Tech Specs (Grid Layout) */}
                     <div className="mt-32">
-                        <div className="flex items-end justify-between border-b border-white/10 pb-4 mb-12">
-                            <h2 className="text-4xl font-black italic uppercase">Tech <span className="text-stroke-white text-transparent">Specs</span></h2>
+                        <div className="flex flex-col md:flex-row items-center md:items-end justify-between border-b border-white/10 pb-4 mb-12 text-center md:text-left">
+                            <h2 className="text-4xl font-black italic uppercase mb-2 md:mb-0">Tech <span className="text-stroke-white text-transparent">Specs</span></h2>
                             <span className="font-mono text-xs text-f1-red tracking-widest">CLASSIFIED//INTERNAL</span>
                         </div>
 
