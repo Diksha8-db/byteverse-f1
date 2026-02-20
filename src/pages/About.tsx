@@ -17,50 +17,61 @@ export const About = () => {
                     transition={{ duration: 0.8 }}
                 >
 
-                    {/* Header (F1 Style) */}
+                    {/* Header (Event Style) */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-8 border-b border-white/10 relative">
                         <div>
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="w-2 h-2 bg-f1-red rounded-full animate-pulse"></div>
-                                <span className="font-mono text-xs text-f1-red uppercase tracking-[0.2em]">Team HQ // Restricted Access</span>
+                                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                                <span className="font-mono text-xs text-primary uppercase tracking-[0.2em]">BYTEVERSE // HACKSLASH NITP</span>
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-[0.9]">
-                                Our <span className="text-stroke-white text-transparent block md:inline">Legacy</span>
+                                Byteverse <span className="text-stroke-white text-transparent block md:inline">Unleash your coding magic!</span>
                             </h1>
                         </div>
 
                         <div className="mt-6 md:mt-0 max-w-md text-right md:text-right text-gray-400 font-mono text-xs leading-relaxed hidden md:block">
-                            // SECURE CHANNEL ESTABLISHED <br />
-                            // UPLINK: 98.4% STABLE <br />
-                            // ENGINEERING THE FUTURE OF MOTORSPORT
+                            // ANNUAL HACKATHON <br />
+                            // COMMUNITY-DRIVEN // EIGHTH EDITION <br />
+                            // BUILD. COLLABORATE. LAUNCH.
                         </div>
 
                         {/* Decorative Corner */}
-                        <div className="absolute -bottom-[1px] -right-[1px] w-4 h-4 border-b border-r border-f1-red"></div>
+                        <div className="absolute -bottom-[1px] -right-[1px] w-4 h-4 border-b border-r border-primary"></div>
                     </div>
 
-                    <p className="text-xl md:text-2xl text-gray-300 max-w-4xl font-light leading-relaxed mb-24 border-l-4 border-f1-red pl-6">
-                        Engineering the future of high-performance racing through code, data, and precision. We are the architects of speed.
+                    <p className="text-xl md:text-2xl text-gray-300 max-w-4xl font-light leading-relaxed mb-8 border-l-4 border-primary pl-6">
+                        Calling all tech wizards, problem solvers, and creative minds — Byteverse, the annual hackathon by Hackslash NITP, returns for its sixth edition. This electrifying event is where innovation meets code and your creativity knows no bounds.
                     </p>
+
+                    <p className="text-base text-gray-400 max-w-3xl mb-12">
+                        Byteverse is a celebration of collaboration and experimentation. Whether you're building full-stack apps, exploring decentralised systems, or prototyping embedded devices, Byteverse is the arena to ship bold ideas and learn from a community of makers.
+                    </p>
+
+                    <div className="mt-6 mb-12 p-6 bg-white/3 border border-white/5 rounded-xl">
+                        <h3 className="text-2xl font-black italic uppercase mb-2">About Hackslash</h3>
+                        <p className="text-gray-300 leading-relaxed">
+                            Hackslash Developer's Club NIT Patna was established with the vision of fostering a culture of innovation and collaboration. Hackslash is a dynamic community of developers, designers, and tech enthusiasts dedicated to pushing the boundaries of technology and making a positive impact through innovative solutions.
+                        </p>
+                    </div>
 
                     {/* History Timeline */}
                     <div className="relative border-l-2 border-white/10 ml-4 md:ml-0 md:pl-0 space-y-16">
                         <TimelineItem
-                            year="2024"
-                            title="The Inception"
-                            desc="ByteVerse Racing is founded with a single mission: to merge software engineering with motorsport precision."
+                            year="2021"
+                            title="Hackslash Founded"
+                            desc="Hackslash Developer's Club was formed to connect students passionate about building and learning together."
                             align="left"
                         />
                         <TimelineItem
-                            year="2025"
-                            title="First Championship"
-                            desc="Dominated the digital tarmac, securing P1 in the Constructor's standings with our proprietary telemetry AI."
+                            year="2022"
+                            title="Byteverse Debut"
+                            desc="The first Byteverse brought together students from across campus to collaborate on real-world projects and prototypes."
                             align="right"
                         />
                         <TimelineItem
                             year="2026"
-                            title="Global Expansion"
-                            desc="Expanding operations to 5 new circuits and launching the 'Future Drivers' academy program."
+                            title="Eighth Edition"
+                            desc="Byteverse returns bigger: competitions, workshops, mentorship, and new tracks including Web Development, Network Security, and Game Development."
                             align="left"
                         />
                     </div>
@@ -73,12 +84,12 @@ export const About = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <TechCard title="Chassis" value="React 18" icon="layers" />
-                            <TechCard title="Aerodynamics" value="Framer Motion" icon="wind_power" />
-                            <TechCard title="Telemetry" value="Wouter Router" icon="router" />
-                            <TechCard title="Engine" value="TypeScript 5" icon="memory" />
-                            <TechCard title="Fuel" value="Vite" icon="local_gas_station" />
-                            <TechCard title="Tires" value="Tailwind CSS" icon="tire_repair" />
+                            <TechCard title="Events" value="Hackathon • Workshops" icon="emoji_events" />
+                            <TechCard title="Tracks" value="Web3, Security, Game, AI" icon="category" />
+                            <TechCard title="Mentors" value="Industry & Alumni" icon="people" />
+                            <TechCard title="Prizes" value="Cash & Perks" icon="card_giftcard" />
+                            <TechCard title="Community" value="Hackslash NITP" icon="groups" />
+                            <TechCard title="Platform" value="Vite • React • TS" icon="developer_mode" />
                         </div>
                     </div>
 
@@ -90,11 +101,11 @@ export const About = () => {
                         <span className="material-icons text-6xl text-white/5 absolute top-8 left-8">format_quote</span>
 
                         <blockquote className="relative z-10 text-2xl md:text-3xl font-bold italic text-white mb-8">
-                            "Speed is irrelevant if you're going in the wrong direction. At ByteVerse, we code the map."
+                            "Byteverse is where ideas meet build — ship something you believe in and learn along the way."
                         </blockquote>
                         <cite className="not-italic flex flex-col items-center">
-                            <span className="font-bold text-f1-red tracking-widest uppercase">Alex Chen</span>
-                            <span className="text-xs font-mono text-gray-500">Team Principal</span>
+                            <span className="font-bold text-primary tracking-widest uppercase">Hackslash Team</span>
+                            <span className="text-xs font-mono text-gray-500">Developer's Club, NIT Patna</span>
                         </cite>
                     </div>
 

@@ -31,18 +31,18 @@ const tracks = [
     },
     {
         id: "03",
-        code: "IOT",
-        title: "SENSOR CIRCUIT",
-        subtitle: "Internet of Things",
-        desc: "Hardware meets software. Automation, robotics, and embedded systems.",
+        code: "WEB_DEV",
+        title: "WEB DEVELOPMENT",
+        subtitle: "Full-Stack Web Development",
+        desc: "Frontend, backend, and deployment. Build responsive web apps, APIs, and CI/CD pipelines.",
         specs: [
-            { label: "LATENCY", value: "1ms", color: "text-cyan-code" },
-            { label: "CONN", value: "5G", color: "text-purple-500" }
+            { label: "STACK", value: "MERN/TS", color: "text-blue-400" },
+            { label: "RESP", value: "A+", color: "text-green-400" }
         ],
-        // Abstract Circuit Path: Circuit Lines
-        path: "M20,80 H50 L60,50 H100 L110,110 H150 L160,80 H180",
-        color: "border-cyan-code shadow-[0_0_20px_#00f0ff]",
-        accent: "bg-cyan-code"
+        // Abstract Circuit Path: Wave-like web topology
+        path: "M20,100 C40,40 160,40 180,100 S140,160 100,140",
+        color: "border-sky-500 shadow-[0_0_20px_#0ea5e9]",
+        accent: "bg-sky-500"
     },
     {
         id: "04",
@@ -58,6 +58,37 @@ const tracks = [
         path: "M30,80 C30,20 90,20 90,80 S150,140 150,80 S90,20 90,80",
         color: "border-purple-500 shadow-[0_0_20px_#a855f7]",
         accent: "bg-purple-500"
+    }
+    ,
+    {
+        id: "05",
+        code: "NET_SEC",
+        title: "NETWORK SECURITY",
+        subtitle: "Cybersecurity & Networking",
+        desc: "Pen-testing, secure protocols, threat modeling, and hardened deployments.",
+        specs: [
+            { label: "RISK", value: "LOW", color: "text-emerald-400" },
+            { label: "THREAT", value: "MONITORED", color: "text-red-400" }
+        ],
+        // Abstract Circuit Path: Shield/mesh
+        path: "M20,120 L60,60 L100,120 L140,60 L180,120",
+        color: "border-emerald-500 shadow-[0_0_20px_#10b981]",
+        accent: "bg-emerald-500"
+    },
+    {
+        id: "06",
+        code: "GAME_DEV",
+        title: "GAME DEVELOPMENT",
+        subtitle: "Interactive Entertainment",
+        desc: "Design mechanics, graphics, and real-time systems; build playable prototypes.",
+        specs: [
+            { label: "FPS", value: "60+", color: "text-yellow-400" },
+            { label: "ENGINE", value: "Unity/UE", color: "text-orange-400" }
+        ],
+        // Abstract Circuit Path: Dynamic arcs (gamepad-like)
+        path: "M30,100 C50,40 150,40 170,100 M60,120 L140,120",
+        color: "border-orange-400 shadow-[0_0_20px_#fb923c]",
+        accent: "bg-orange-400"
     }
 ];
 

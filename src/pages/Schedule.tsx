@@ -1,32 +1,73 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 
-// Modular Schedule Data
+// Hackathon Schedule Data
 const scheduleData = [
     {
-        day: "FRIDAY",
-        date: "MAR 14",
+        day: "MARCH",
+        date: "MAR 01",
         events: [
-            { id: 1, time: "16:00", title: "SCRUTINEERING", desc: "Team Registration & Hardware Check", location: "Paddock A", type: "ops", icon: "how_to_reg" },
-            { id: 2, time: "18:00", title: "DRIVERS' BRIEFING", desc: "Opening Ceremony & Challenge Reveal", location: "Track Green", type: "event", icon: "flag" },
-            { id: 3, time: "20:00", title: "FREE PRACTICE 1", desc: "Initial Hacking Session Begins", location: "Pit Lane", type: "race", icon: "code" }
+            { id: 1, time: "18:00", title: "Registration Opens", desc: "Hackathon registration opens online", location: "Online Portal", type: "ops", icon: "how_to_reg" }
         ]
     },
     {
-        day: "SATURDAY",
-        date: "MAR 15",
+        day: "APRIL",
+        date: "APR 02",
         events: [
-            { id: 4, time: "09:00", title: "QUALIFYING", desc: "Intense Coding Sprints", location: "Pit Lane", type: "race", icon: "timer" },
-            { id: 5, time: "13:00", title: "PIT STOP", desc: "Lunch & Refueling", location: "Hospitality", type: "ops", icon: "restaurant" },
-            { id: 6, time: "14:00", title: "SECTOR 2", desc: "Mentor Sessions & Workshops", location: "Briefing Room", type: "event", icon: "school" },
-            { id: 7, time: "22:00", title: "NIGHT GRAND PRIX", desc: "Overnight Hacking Challenge", location: "Track (All Sectors)", type: "race", icon: "nightlight_round" }
+            { id: 2, time: "TBA", title: "Info Session", desc: "Introductory info session for participants", location: "Online / Live Stream", type: "event", icon: "info" },
+            { id: 3, time: "18:00", title: "PPT Submissions Commence", desc: "Teams may start submitting PPT entries", location: "Submissions Portal", type: "ops", icon: "file_present" }
         ]
     },
     {
-        day: "SUNDAY",
-        date: "MAR 16",
+        day: "APRIL",
+        date: "APR 09",
         events: [
-            { id: 8, time: "10:00", title: "FINAL LAP", desc: "Code Freeze & Submission", location: "Pit Lane", type: "race", icon: "flag_circle" },
-            { id: 9, time: "12:00", title: "PODIUM CEREMONY", desc: "Awards & Closing Remarks", location: "Main Stage", type: "event", icon: "emoji_events" }
+            { id: 4, time: "23:59", title: "PPT Submissions Deadline", desc: "Final deadline for PPT submissions", location: "Submissions Portal", type: "ops", icon: "timer" }
+        ]
+    },
+    {
+        day: "APRIL",
+        date: "APR 10",
+        events: [
+            { id: 5, time: "TBA", title: "Inauguration Ceremony", desc: "Opening & welcome remarks", location: "Main Hall / Stream", type: "event", icon: "event" },
+            { id: 6, time: "09:00", title: "Presentation Rounds — Day 1", desc: "Teams present their projects (Day 1)", location: "Presentation Halls", type: "race", icon: "groups" }
+        ]
+    },
+    {
+        day: "APRIL",
+        date: "APR 11",
+        events: [
+            { id: 7, time: "09:00", title: "Presentation Rounds — Day 2", desc: "Continuation of presentations (Day 2)", location: "Presentation Halls", type: "race", icon: "groups" },
+            { id: 8, time: "23:59", title: "Hackathon Registration Closes", desc: "Final registration cut-off", location: "Online Portal", type: "ops", icon: "how_to_reg" }
+        ]
+    },
+    {
+        day: "APRIL",
+        date: "APR 13",
+        events: [
+            { id: 9, time: "13:00", title: "Hackathon Commences", desc: "Official hackathon start — build phase begins", location: "Event Campus & Online", type: "race", icon: "code" }
+        ]
+    },
+    {
+        day: "APRIL",
+        date: "APR 14",
+        events: [
+            { id: 10, time: "10:00", title: "Mid Evaluation", desc: "Mid-event evaluations and mentor check-ins", location: "Evaluation Rooms", type: "event", icon: "preview" },
+            { id: 11, time: "19:00", title: "Hackathon Concludes", desc: "Submission deadline and end of build phase", location: "Event Campus & Online", type: "race", icon: "check_circle" },
+            { id: 12, time: "20:00", title: "Community Review Window Opens", desc: "Community review & voting period begins", location: "Community Portal", type: "event", icon: "chat" }
+        ]
+    },
+    {
+        day: "APRIL",
+        date: "APR 15",
+        events: [
+            { id: 13, time: "20:00", title: "Community Review Window Closes", desc: "End of the community voting window", location: "Community Portal", type: "event", icon: "chat" }
+        ]
+    },
+    {
+        day: "APRIL",
+        date: "APR 20",
+        events: [
+            { id: 14, time: "TBA", title: "Closing Ceremony", desc: "Awards, highlights, and closing remarks", location: "Main Hall / Stream", type: "event", icon: "celebration" }
         ]
     }
 ];
@@ -122,9 +163,9 @@ export const Schedule = () => {
                 {/* Header - Pit Board Style */}
                 <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-16 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
                     <div className="w-full md:w-auto mb-6 md:mb-0">
-                        <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1">OFFICIAL TIMING</div>
+                        <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1">HACKATHON</div>
                         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
-                            Race <span className="text-stroke-white text-transparent">Schedule</span>
+                            Hackathon <span className="text-stroke-white text-transparent">Schedule</span>
                         </h1>
                     </div>
                     <div className="w-full md:w-auto flex flex-col items-center md:items-end">

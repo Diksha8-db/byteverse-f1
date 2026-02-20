@@ -27,9 +27,9 @@ export const NavBar = () => {
             <Link href="/about" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/about' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 About
             </Link>
-            <Link href="/sponsors" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-primary/20 rounded-xl border border-primary/20 hover:border-primary/50 text-white' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full border border-primary/30 hover:bg-primary/20 text-primary hover:text-white'} ${location === '/sponsors' ? (mobile ? 'bg-primary/20 border-primary' : 'bg-primary/20') : ''}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            {/* <Link href="/sponsors" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-primary/20 rounded-xl border border-primary/20 hover:border-primary/50 text-white' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full border border-primary/30 hover:bg-primary/20 text-primary hover:text-white'} ${location === '/sponsors' ? (mobile ? 'bg-primary/20 border-primary' : 'bg-primary/20') : ''}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Sponsors
-            </Link>
+            </Link> */}
         </>
     );
 
@@ -39,7 +39,7 @@ export const NavBar = () => {
 
                 {/* Logo */}
                 <Link href="/" className="text-lg md:text-xl font-bold tracking-tighter text-white flex items-center gap-2 cursor-pointer whitespace-nowrap">
-                    <span className="text-primary material-icons text-xl md:text-2xl">speed</span>
+                    <img src="/byteverse.png" width={32} height={32} alt="ByteVerse Logo" className="rounded-full" />
                     BYTEVERSE
                 </Link>
 
@@ -50,9 +50,6 @@ export const NavBar = () => {
 
                 {/* Login & Mobile Toggle */}
                 <div className="flex items-center gap-4">
-                    <Link href="/login" className="hidden lg:block text-primary hover:text-white transition-colors text-sm font-bold uppercase tracking-widest border-l border-white/10 pl-6 cursor-pointer">
-                        Login
-                    </Link>
 
                     {/* Mobile Hamburger */}
                     <button
@@ -69,12 +66,6 @@ export const NavBar = () => {
                 <div className="flex flex-col gap-1">
                     <NavLinks mobile />
                 </div>
-
-                <div className="h-px bg-white/10 my-2"></div>
-
-                <Link href="/login" className="text-center py-3 text-primary font-bold uppercase tracking-widest hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                    Login Member
-                </Link>
             </div>
         </nav>
     );

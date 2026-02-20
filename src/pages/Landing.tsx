@@ -1,8 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 
 // Custom Date and Time for the Countdown
 const TARGET_DATE = new Date('2026-03-15T10:00:00'); // Example: March 15, 2026, 10:00 AM
+
+// Organizers data (arranged by position priority)
+const organizers = [
+    { name: 'Sonu Jhajharia', position: 'Community Lead', linkedin: 'https://www.linkedin.com/in/sonu-jhajharia-122a39285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', github: 'https://github.com/sonuj04', image: '/sonu.jpg' },
+    { name: 'Ravi Upadhyay', position: 'Vice President', linkedin: 'https://www.linkedin.com/in/raviupadhyay23', github: 'https://github.com/upadhyayravi023', image: '/ravi.jpg' },
+    { name: 'Ashutosh Panda', position: 'Administrative & AI/ML Lead', linkedin: 'https://www.linkedin.com/in/ashutosh-panda-63a478380', github: 'https://github.com/zen-zap', image: '/ashu.jpg' },
+    { name: 'Vasu Choudhari', position: 'Technical Lead / Secretary', linkedin: 'https://www.linkedin.com/in/vasu-choudhari', github: 'https://www.github.com/vasu-here', image: '/vasu.jpg' },
+    { name: 'Shivendu Kumar', position: 'Event Lead (Patna Campus)', linkedin: 'https://www.linkedin.com/in/shivendu-kumar-5971112b9?utm_source=share_via&utm_content=profile&utm_medium=member_android', github: 'https://github.com/ShivenduKmr', image: '/shivendu.jpg' },
+    { name: 'Sanjeet Raj', position: 'Web Lead', linkedin: 'https://www.linkedin.com/in/Sanjeetraj40/', github: 'https://github.com/Sanjeet4567', image: '/sanjeet.jpeg' },
+    { name: 'Suryakant Acharya', position: 'Co-Lead (Gray Interface)', linkedin: 'https://www.linkedin.com/in/suryakant-acharya-8b09a628a', github: 'https://github.com/Suryakant2112', image: '/surya.jpg' },
+    { name: 'Tanay Palekar', position: 'Lead, Team Nougat', linkedin: 'https://www.linkedin.com/in/palekar-tanay-80b0a428b', github: 'https://github.com/tanay4768', image: '/tanay.jpg' }
+];
 
 export const Landing = () => {
     const [timeLeft, setTimeLeft] = useState({
@@ -60,6 +73,8 @@ export const Landing = () => {
     }, []);
 
     const formatTime = (value: number) => value.toString().padStart(2, '0');
+
+    const carouselRef = useRef<HTMLDivElement | null>(null);
 
     return (
         <div className="font-display bg-asphalt text-white min-h-screen overflow-x-hidden flex flex-col relative selection:bg-primary selection:text-white">
@@ -148,6 +163,53 @@ export const Landing = () => {
                 </div>
             </main>
 
+                    {/* Organizers Carousel */}
+                    <section className="relative z-20 max-w-7xl mx-auto px-6 py-12">
+                        <div className="mb-8 flex items-center justify-between">
+                            <div>
+                                <div className="text-xs font-mono text-primary tracking-widest mb-2">TEAM // ORGANIZERS</div>
+                                <h2 className="text-4xl font-black italic uppercase">Organizers</h2>
+                                <p className="text-gray-400 mt-2 max-w-2xl">Meet the Hackslash team driving Byteverse — click through to view profiles.</p>
+                            </div>
+                        </div>
+
+                        <div className="relative">
+                            {/* hide scrollbar visually for the carousel */}
+                            <style>{`#organizers-carousel::-webkit-scrollbar{display:none} #organizers-carousel{scrollbar-width:none;-ms-overflow-style:none}`}</style>
+                            <button
+                                aria-label="Scroll left"
+                                onClick={() => {
+                                    const el = carouselRef.current;
+                                    if (!el) return;
+                                    el.scrollBy({ left: -Math.round(el.clientWidth * 0.7), behavior: 'smooth' });
+                                }}
+                                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur flex items-center justify-center hover:bg-primary transition-colors"
+                            >
+                                <span className="material-icons text-white">chevron_left</span>
+                            </button>
+
+                            <div id="organizers-carousel" ref={carouselRef} className="no-scrollbar overflow-x-auto scroll-smooth py-2 px-6">
+                                <div className="flex gap-6 items-stretch">
+                                    {organizers.map((org, i) => (
+                                        <OrganizerCard key={org.github || i} organizer={org} index={i} />
+                                    ))}
+                                </div>
+                            </div>
+
+                            <button
+                                aria-label="Scroll right"
+                                onClick={() => {
+                                    const el = carouselRef.current;
+                                    if (!el) return;
+                                    el.scrollBy({ left: Math.round(el.clientWidth * 0.7), behavior: 'smooth' });
+                                }}
+                                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur flex items-center justify-center hover:bg-primary transition-colors"
+                            >
+                                <span className="material-icons text-white">chevron_right</span>
+                            </button>
+                        </div>
+                    </section>
+
             {/* Bottom Telemetry & Ticker */}
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
                 <div className="max-w-7xl mx-auto w-full">
@@ -176,7 +238,7 @@ export const Landing = () => {
                         <div className="p-4 md:p-6 flex flex-col items-start group hover:bg-white/5 transition-colors">
                             <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1">Prize Purse</span>
                             <div className="flex items-center gap-2">
-                                <span className="text-lg md:text-xl font-bold text-white">$50,000</span>
+                                <span className="text-lg md:text-xl font-bold text-white">₹ ----</span>
                             </div>
                         </div>
                         {/* Status */}
@@ -190,35 +252,45 @@ export const Landing = () => {
                 </div>
 
                 {/* Scrolling Ticker */}
-                <div className="w-full overflow-hidden bg-black py-2 md:py-3 relative flex items-center border-t border-white/5">
-                    <div className="absolute left-0 top-0 bottom-0 w-10 md:w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-10 md:w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
-
-                    <div className="flex animate-marquee">
-                        {/* Set 1 */}
-                        <div className="flex items-center gap-12 md:gap-16 shrink-0 pr-12 md:pr-16 opacity-70 text-xs md:text-sm font-mono tracking-widest text-gray-400">
-                            <span className="text-primary font-bold">LIVE TELEMETRY:</span>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">code</span> GITHUB</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">cloud</span> DIGITALOCEAN</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">terminal</span> DEV.TO</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">polymer</span> POLYGON</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">bolt</span> VERCELL</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">memory</span> NVIDIA</div>
-                        </div>
-
-                        {/* Set 2 (Duplicate for seamless loop) */}
-                        <div className="flex items-center gap-12 md:gap-16 shrink-0 pr-12 md:pr-16 opacity-70 text-xs md:text-sm font-mono tracking-widest text-gray-400">
-                            <span className="text-primary font-bold">LIVE TELEMETRY:</span>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">code</span> GITHUB</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">cloud</span> DIGITALOCEAN</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">terminal</span> DEV.TO</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">polymer</span> POLYGON</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">bolt</span> VERCELL</div>
-                            <div className="flex items-center gap-2"><span className="material-icons text-xs">memory</span> NVIDIA</div>
-                        </div>
-                    </div>
-                </div>
+                
             </footer>
         </div>
+    );
+};
+
+const OrganizerCard = ({ organizer, index }: { organizer: any, index: number }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            style={{ height: 320 }}
+            className="min-w-[240px] w-[240px] md:w-[320px] bg-carbon border border-white/10 rounded-xl overflow-hidden relative group h-[320px]"
+        >
+            <div className="absolute inset-0 z-0">
+                <img src={organizer.image} alt={organizer.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            </div>
+
+            <div className="relative z-10 p-4 flex flex-col justify-end h-full">
+                <div className="mb-2">
+                    <div className="text-[10px] font-mono text-primary uppercase tracking-widest">{organizer.position}</div>
+                    <h3 className="text-lg md:text-xl font-black italic uppercase text-white">{organizer.name}</h3>
+                </div>
+
+                <div className="flex items-center gap-2">
+                    <a href={organizer.linkedin} target="_blank" rel="noreferrer" className="text-white/80 hover:text-primary transition-colors text-xs md:text-sm" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.966 0-1.75-.788-1.75-1.76 0-.972.784-1.759 1.75-1.759s1.75.787 1.75 1.759c0 .972-.784 1.76-1.75 1.76zm13.5 10.29h-3v-4.75c0-1.133-.02-2.59-1.58-2.59-1.58 0-1.82 1.233-1.82 2.51v4.83h-3v-9h2.88v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v5.73z" />
+                        </svg>
+                    </a>
+                    <a href={organizer.github} target="_blank" rel="noreferrer" className="text-white/80 hover:text-primary transition-colors text-xs md:text-sm" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                            <path d="M12 .5c-6.627 0-12 5.373-12 12 0 5.302 3.438 9.8 8.205 11.387.6.113.82-.263.82-.583 0-.288-.01-1.05-.015-2.06-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.76-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.467-2.381 1.235-3.221-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.654 1.653.242 2.873.119 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.804 5.624-5.476 5.92.43.37.814 1.102.814 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.699.825.58 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </motion.div>
     );
 };

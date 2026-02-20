@@ -39,7 +39,7 @@ export const Prizes = () => {
                     <TopDownCarCard
                         rank="P2"
                         tier="SILVER CLASS"
-                        prize="$5,000"
+                        prize="₹ -----"
                         accentColor="border-gray-400"
                         glowColor="shadow-[0_0_40px_rgba(156,163,175,0.3)]"
                         textColor="text-gray-300"
@@ -47,14 +47,14 @@ export const Prizes = () => {
                         carImage="/car-silver.png"
                         height="h-[550px]"
                         delay={0.2}
-                        perks={["VR Headset", "$2k Cloud Credits"]}
+                        perks={["perk_1", "perk_2"]}
                     />
 
                     {/* P1 (Gold) */}
                     <TopDownCarCard
                         rank="P1"
                         tier="GOLD CLASS"
-                        prize="$10,000"
+                        prize="₹ -----"
                         accentColor="border-yellow-500"
                         glowColor="shadow-[0_0_60px_rgba(234,179,8,0.5)]"
                         textColor="text-yellow-400"
@@ -63,14 +63,14 @@ export const Prizes = () => {
                         height="h-[600px]"
                         delay={0}
                         isWinner={true}
-                        perks={["RTX 4090 Laptop", "VC Intro", "$10k AWS Credits"]}
+                        perks={["perk_1", "perk_2"]}
                     />
 
                     {/* P3 (Bronze/Red) */}
                     <TopDownCarCard
                         rank="P3"
                         tier="BRONZE CLASS"
-                        prize="$2,500"
+                        prize="₹ -----"
                         accentColor="border-red-600"
                         glowColor="shadow-[0_0_40px_rgba(220,38,38,0.4)]"
                         textColor="text-red-500"
@@ -78,7 +78,7 @@ export const Prizes = () => {
                         carImage="/car-bronze.png"
                         height="h-[500px]"
                         delay={0.4}
-                        perks={["Pro API Keys", "Gaming Peripherals"]}
+                        perks={["perk_1", "perk_2"]}
                     />
 
                 </div>

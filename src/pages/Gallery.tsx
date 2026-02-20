@@ -1,25 +1,58 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const galleryImages = [
-    { id: 1, src: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop", category: "Action", title: "Lights Out" },
-    { id: 2, src: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=1000&auto=format&fit=crop", category: "Behind the Scenes", title: "Garage Focus" },
-    { id: 3, src: "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?q=80&w=1000&auto=format&fit=crop", category: "Podium", title: "Victory Lane" },
-    { id: 4, src: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=1000&auto=format&fit=crop", category: "Action", title: "Apex Speed" },
-    { id: 5, src: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop", category: "Detail", title: "Carbon Fiber" },
-    { id: 6, src: "https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1000&auto=format&fit=crop", category: "Action", title: "Night Race" },
+    { id: 1, src: "/img1.jpg" },
+    { id: 2, src: "/img2.jpg" },
+    { id: 3, src: "/img3.jpg" },
+    { id: 4, src: "/img4.jpg" },
+    { id: 5, src: "/img5.jpg" },
+    { id: 6, src: "/img6.jpg" },
+    { id: 7, src: "/img7.jpg" },
+    { id: 8, src: "/img8.jpg" },
+    { id: 9, src: "/img9.jpg" },
+    { id: 10, src: "/img10.jpg" },
+    { id: 11, src: "/img11.jpg" },
+    { id: 12, src: "/img12.jpg" },
 ];
 
 export const Gallery = () => {
     const [selectedId, setSelectedId] = useState<number | null>(null);
-    const [filter, setFilter] = useState("All");
 
-    const categories = ["All", "Action", "Behind the Scenes", "Podium", "Detail"];
+    // Display all images (no categories)
+    const filteredImages = galleryImages;
 
-    // Safety check for filtering
-    const filteredImages = filter === "All"
-        ? galleryImages
-        : galleryImages.filter(img => img.category === filter);
+    // For desktop layout we'll make exactly 3 rows (for 12 images)
+    // and make the first image of each row span two columns.
+    // This will be achieved via index-based responsive classes below.
+
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const itemRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+    const setSpan = (id: number) => {
+        const container = containerRef.current;
+        const item = itemRefs.current[id];
+        if (!container || !item) return;
+        const img = item.querySelector('img') as HTMLImageElement | null;
+        if (!img) return;
+
+        const computed = window.getComputedStyle(container);
+        const rowHeight = parseFloat(computed.getPropertyValue('grid-auto-rows')) || 8;
+        const rowGap = parseFloat(computed.getPropertyValue('gap')) || 24;
+        const height = img.getBoundingClientRect().height;
+        const span = Math.ceil((height + rowGap) / (rowHeight + rowGap));
+        item.style.gridRowEnd = `span ${span}`;
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            Object.keys(itemRefs.current).forEach(k => setSpan(Number(k)));
+        };
+        window.addEventListener('resize', handleResize);
+        // initial pass in case images already loaded
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <section className="min-h-screen bg-asphalt text-white py-24 font-display overflow-hidden relative">
@@ -37,32 +70,19 @@ export const Gallery = () => {
                             <span className="font-mono text-xs text-f1-red uppercase tracking-widest">Media Centre</span>
                         </div>
                         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
-                            Race <span className="text-stroke-white text-transparent">Highlights</span>
+                            2k24 <span className="text-stroke-white text-transparent">Highlights</span>
                         </h1>
                     </div>
 
-                    {/* Filter Tabs */}
-                    <div className="flex flex-wrap gap-2 mt-6 md:mt-0">
-                        {categories.map(cat => (
-                            <button
-                                key={cat}
-                                onClick={() => setFilter(cat)}
-                                className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all duration-300 ${filter === cat
-                                    ? 'bg-white text-black'
-                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
-                                    }`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
+                    {/* No categories — displaying all images */}
                 </div>
 
-                {/* Masonry Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
+                {/* Masonry Grid: desktop uses 4 columns so 12 items = 3 rows */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[260px]" ref={containerRef}>
                     <AnimatePresence>
                         {filteredImages.map((image, index) => (
                             <motion.div
+                                ref={el => (itemRefs.current[image.id] = el)}
                                 layoutId={image.id.toString()} // Ensure ID is string for layoutId
                                 key={image.id}
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -70,21 +90,17 @@ export const Gallery = () => {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                                 onClick={() => setSelectedId(image.id as any)}
-                                className={`relative cursor-pointer group overflow-hidden rounded-xl border border-white/10 hover:border-f1-red/50 transition-colors ${index % 3 === 0 ? 'md:col-span-2' : ''}`}
+                                className={`relative cursor-pointer group overflow-hidden rounded-xl border border-white/10 hover:border-primary/50 transition-colors ${index % 3 === 0 ? 'md:col-span-2' : ''} ${index % 4 === 0 ? 'lg:col-span-2' : ''}`}
                             >
                                 <img
                                     src={image.src}
-                                    alt={image.title}
+                                    onLoad={() => setSpan(image.id)}
+                                    alt={`Gallery image ${image.id}`}
                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity"></div>
 
-                                <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    <span className="block text-[10px] font-mono text-f1-red uppercase tracking-widest mb-1">{image.category}</span>
-                                    <h3 className="text-2xl font-bold uppercase italic text-white">{image.title}</h3>
-                                </div>
-
-                                {/* Icon Overlay */}
+                                {/* Icon Overlay (no on-image text) */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-50 group-hover:scale-100">
                                     <span className="material-icons text-white">open_in_full</span>
                                 </div>
@@ -113,17 +129,10 @@ export const Gallery = () => {
                                     if (!img) return null;
                                     return (
                                         <>
-                                            <img src={img.src} alt={img.title} className="w-full h-full object-contain" />
-                                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-8">
-                                                <h2 className="text-4xl font-black italic uppercase text-white mb-2">{img.title}</h2>
-                                                <div className="flex items-center gap-4">
-                                                    <span className="text-xs font-mono text-f1-red uppercase tracking-widest border border-f1-red px-2 py-0.5 rounded">{img.category}</span>
-                                                    <span className="text-xs font-mono text-gray-400">IMG_ID: {img.id} // RAW_CAPTURE</span>
-                                                </div>
-                                            </div>
+                                            <img src={img.src} alt={`Gallery image ${img.id}`} className="w-full h-full object-contain" />
                                             <button
                                                 onClick={() => setSelectedId(null)}
-                                                className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur rounded-full flex items-center justify-center text-white hover:bg-f1-red transition-colors"
+                                                className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
                                             >
                                                 <span className="material-icons">close</span>
                                             </button>
