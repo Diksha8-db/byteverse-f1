@@ -118,7 +118,7 @@ export const Landing = () => {
                         <span className="w-1 h-3 bg-white skew-x-[-12deg]"></span>
                         <span className="w-1 h-3 bg-black skew-x-[-12deg]"></span>
                     </div>
-                    <span className="font-mono text-xs text-gray-300 tracking-[0.2em] font-bold">SEASON 2026 // RD 1</span>
+                    <span className="font-mono text-xs text-gray-300 tracking-[0.2em] font-bold">SEASON 2026</span>
                 </div>
 
                 {/* Headline */}
@@ -214,7 +214,7 @@ export const Landing = () => {
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
                 <div className="max-w-7xl mx-auto w-full">
                     {/* Telemetry Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5 border-b border-white/5">
+                    <div className="flex flex-col items-center justify-between md:flex-row divide-x divide-white/5 border-b border-white/5">
                         {/* Location */}
                         <div className="p-4 md:p-6 flex flex-col items-start group hover:bg-white/5 transition-colors">
                             <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-1">
@@ -232,13 +232,6 @@ export const Landing = () => {
                                 <span className="text-lg md:text-xl font-bold">
                                     {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                                 </span>
-                            </div>
-                        </div>
-                        {/* Prize Pool */}
-                        <div className="p-4 md:p-6 flex flex-col items-start group hover:bg-white/5 transition-colors">
-                            <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1">Prize Purse</span>
-                            <div className="flex items-center gap-2">
-                                <span className="text-lg md:text-xl font-bold text-white">₹ ----</span>
                             </div>
                         </div>
                         {/* Status */}

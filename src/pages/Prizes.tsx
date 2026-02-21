@@ -30,12 +30,11 @@ export const Prizes = () => {
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
                     </div>
-                </div>
+                </div>  
 
-                {/* 3. THE TOP-DOWN CAR PODIUM */}
-                <div className="w-full max-w-6xl relative flex flex-col md:flex-row items-end justify-center gap-6 perspective-1000">
+                <div className="text-primary font-bold text-xl animate-pulse">To be announced soon... </div>
+                {/* <div className="w-full max-w-6xl relative flex flex-col md:flex-row items-end justify-center gap-6 perspective-1000">
 
-                    {/* P2 (Silver) */}
                     <TopDownCarCard
                         rank="P2"
                         tier="SILVER CLASS"
@@ -49,8 +48,6 @@ export const Prizes = () => {
                         delay={0.2}
                         perks={["perk_1", "perk_2"]}
                     />
-
-                    {/* P1 (Gold) */}
                     <TopDownCarCard
                         rank="P1"
                         tier="GOLD CLASS"
@@ -66,7 +63,6 @@ export const Prizes = () => {
                         perks={["perk_1", "perk_2"]}
                     />
 
-                    {/* P3 (Bronze/Red) */}
                     <TopDownCarCard
                         rank="P3"
                         tier="BRONZE CLASS"
@@ -81,7 +77,7 @@ export const Prizes = () => {
                         perks={["perk_1", "perk_2"]}
                     />
 
-                </div>
+                </div> */}
             </main>
         </section>
     );
