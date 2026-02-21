@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 
 
@@ -30,7 +30,7 @@ export const Prizes = () => {
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
                     </div>
-                </div>  
+                </div>
 
                 <div className="text-primary font-bold text-xl animate-pulse">To be announced soon... </div>
                 {/* <div className="w-full max-w-6xl relative flex flex-col md:flex-row items-end justify-center gap-6 perspective-1000">
@@ -84,95 +84,95 @@ export const Prizes = () => {
 };
 
 // --- SUB-COMPONENT: Top-Down Car Card ---
-const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, glowBg, carImage, height, delay, isWinner, perks }: any) => {
-    return (
-        <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: delay, ease: "backOut" }}
-            className={`relative w-full md:w-[350px] ${height} group cursor-pointer perspective-500`}
-        >
-            {/* Main Container - The "Grid Slot" */}
-            <div className={`relative h-full w-full bg-[#0a0a0a] border-x border-t ${accentColor} border-b-0 flex flex-col items-center overflow-hidden transition-all duration-500 hover:-translate-y-2 ${glowColor}`}>
+// const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, glowBg, carImage, height, delay, isWinner, perks }: any) => {
+//     return (
+//         <motion.div
+//             initial={{ y: 100, opacity: 0 }}
+//             animate={{ y: 0, opacity: 1 }}
+//             transition={{ duration: 0.8, delay: delay, ease: "backOut" }}
+//             className={`relative w-full md:w-[350px] ${height} group cursor-pointer perspective-500`}
+//         >
+//             {/* Main Container - The "Grid Slot" */}
+//             <div className={`relative h-full w-full bg-[#0a0a0a] border-x border-t ${accentColor} border-b-0 flex flex-col items-center overflow-hidden transition-all duration-500 hover:-translate-y-2 ${glowColor}`}>
 
-                {/* 1. Track Texture Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(255,255,255,0.03)_2px,transparent_2px)] bg-[length:40px_40px] opacity-30"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+//                 {/* 1. Track Texture Background */}
+//                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(255,255,255,0.03)_2px,transparent_2px)] bg-[length:40px_40px] opacity-30"></div>
+//                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
-                {/* 2. Rank Header (Floating) */}
-                <div className="absolute top-8 z-20 text-center">
-                    <div className={`text-[10px] font-black tracking-[0.3em] uppercase mb-2 ${textColor}`}>{tier}</div>
-                    <h2 className="text-7xl font-black italic text-white tracking-tighter opacity-90 drop-shadow-2xl">
-                        {rank}
-                    </h2>
-                </div>
+//                 {/* 2. Rank Header (Floating) */}
+//                 <div className="absolute top-8 z-20 text-center">
+//                     <div className={`text-[10px] font-black tracking-[0.3em] uppercase mb-2 ${textColor}`}>{tier}</div>
+//                     <h2 className="text-7xl font-black italic text-white tracking-tighter opacity-90 drop-shadow-2xl">
+//                         {rank}
+//                     </h2>
+//                 </div>
 
-                {/* 3. The Top-Down Car */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center z-10">
-                    {/* Glow behind car - Increased opacity for visibility, always visible on click or hover */}
-                    <div className={`absolute w-32 h-64 ${glowBg} blur-[80px] transition-opacity duration-500 opacity-40 group-hover:opacity-60`}></div>
+//                 {/* 3. The Top-Down Car */}
+//                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center z-10">
+//                     {/* Glow behind car - Increased opacity for visibility, always visible on click or hover */}
+//                     <div className={`absolute w-32 h-64 ${glowBg} blur-[80px] transition-opacity duration-500 opacity-40 group-hover:opacity-60`}></div>
 
-                    <motion.img
-                        src={carImage}
-                        alt={`${tier} Car`}
-                        className="w-40 md:w-48 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] z-20"
-                        initial={{ scale: 0.9 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 1.05 }} // Added tap interaction for mobile
-                        transition={{ duration: 0.4 }}
-                        // Fallback placeholder
-                        onError={(e: any) => {
-                            e.target.style.display = 'none';
-                            e.target.parentElement.innerHTML += `<div class="w-24 h-48 border-2 border-dashed ${accentColor} rounded-full opacity-30 flex items-center justify-center text-xs text-white/50 font-mono">NO IMAGE</div>`;
-                        }}
-                    />
+//                     <motion.img
+//                         src={carImage}
+//                         alt={`${tier} Car`}
+//                         className="w-40 md:w-48 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] z-20"
+//                         initial={{ scale: 0.9 }}
+//                         whileHover={{ scale: 1.05 }}
+//                         whileTap={{ scale: 1.05 }} // Added tap interaction for mobile
+//                         transition={{ duration: 0.4 }}
+//                         // Fallback placeholder
+//                         onError={(e: any) => {
+//                             e.target.style.display = 'none';
+//                             e.target.parentElement.innerHTML += `<div class="w-24 h-48 border-2 border-dashed ${accentColor} rounded-full opacity-30 flex items-center justify-center text-xs text-white/50 font-mono">NO IMAGE</div>`;
+//                         }}
+//                     />
 
-                    {/* Scanning Laser Effect (Winner only) */}
-                    {isWinner && (
-                        <motion.div
-                            animate={{ top: ['0%', '100%', '0%'] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                            className="absolute left-0 right-0 h-[2px] bg-yellow-400 opacity-50 blur-[1px] w-full z-30"
-                        ></motion.div>
-                    )}
-                </div>
+//                     {/* Scanning Laser Effect (Winner only) */}
+//                     {isWinner && (
+//                         <motion.div
+//                             animate={{ top: ['0%', '100%', '0%'] }}
+//                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+//                             className="absolute left-0 right-0 h-[2px] bg-yellow-400 opacity-50 blur-[1px] w-full z-30"
+//                         ></motion.div>
+//                     )}
+//                 </div>
 
-                {/* 4. Telemetry / Prize Info (Bottom) */}
-                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black to-black/80 border-t border-white/10 p-6 backdrop-blur-sm z-30">
-                    <div className="flex justify-between items-end mb-4">
-                        <div>
-                            <div className="text-gray-500 text-[10px] uppercase tracking-widest font-mono mb-1">Total Prize</div>
-                            <div className={`text-4xl font-bold font-mono tracking-tight text-white`}>{prize}</div>
-                        </div>
-                        {isWinner && <span className="material-icons text-yellow-500 animate-pulse">emoji_events</span>}
-                    </div>
+//                 {/* 4. Telemetry / Prize Info (Bottom) */}
+//                 <div className="absolute bottom-0 w-full bg-gradient-to-t from-black to-black/80 border-t border-white/10 p-6 backdrop-blur-sm z-30">
+//                     <div className="flex justify-between items-end mb-4">
+//                         <div>
+//                             <div className="text-gray-500 text-[10px] uppercase tracking-widest font-mono mb-1">Total Prize</div>
+//                             <div className={`text-4xl font-bold font-mono tracking-tight text-white`}>{prize}</div>
+//                         </div>
+//                         {isWinner && <span className="material-icons text-yellow-500 animate-pulse">emoji_events</span>}
+//                     </div>
 
-                    <div className="space-y-2 border-t border-white/5 pt-3">
-                        {perks.map((perk: string, i: number) => (
-                            <div key={i} className="flex items-center gap-3 text-xs font-mono text-gray-400">
-                                <span className={`w-1.5 h-1.5 rounded-sm ${textColor.replace('text-', 'bg-')}`}></span>
-                                {perk}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+//                     <div className="space-y-2 border-t border-white/5 pt-3">
+//                         {perks.map((perk: string, i: number) => (
+//                             <div key={i} className="flex items-center gap-3 text-xs font-mono text-gray-400">
+//                                 <span className={`w-1.5 h-1.5 rounded-sm ${textColor.replace('text-', 'bg-')}`}></span>
+//                                 {perk}
+//                             </div>
+//                         ))}
+//                     </div>
+//                 </div>
 
-                {/* 5. Start Line Patterns */}
-                <div className="absolute bottom-32 w-full flex justify-between px-4 opacity-20">
-                    <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
-                    <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
-                    <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
-                    <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
-                </div>
+//                 {/* 5. Start Line Patterns */}
+//                 <div className="absolute bottom-32 w-full flex justify-between px-4 opacity-20">
+//                     <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
+//                     <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
+//                     <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
+//                     <div className="w-2 h-8 bg-white skew-x-[-20deg]"></div>
+//                 </div>
 
-            </div>
+//             </div>
 
-            {/* Base "Grid Bay" Marker */}
-            <div className={`w-full h-1 mt-1 ${glowBg}`}></div>
-            <div className="w-full flex justify-between px-2">
-                <div className="w-[1px] h-4 bg-white/20"></div>
-                <div className="w-[1px] h-4 bg-white/20"></div>
-            </div>
-        </motion.div>
-    );
-};
+//             {/* Base "Grid Bay" Marker */}
+//             <div className={`w-full h-1 mt-1 ${glowBg}`}></div>
+//             <div className="w-full flex justify-between px-2">
+//                 <div className="w-[1px] h-4 bg-white/20"></div>
+//                 <div className="w-[1px] h-4 bg-white/20"></div>
+//             </div>
+//         </motion.div>
+//     );
+// };
