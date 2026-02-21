@@ -104,7 +104,7 @@ export const Landing = () => {
                         <div key={i} className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-black transition-all duration-100 ${isOn && !lightsOut ? 'bg-red-600 shadow-[0_0_50px_rgba(220,38,38,1)] scale-110' : 'bg-gray-900'}`}></div>
                     ))}
                 </div>
-                <div className="mt-8 font-mono text-xs text-gray-500 tracking-[0.5em] animate-pulse">SEQUENCE INITIATED</div>
+                <div className="mt-8 font-mono text-xs text-gray-500 tracking-[0.5em] animate-pulse">BYTEVERSE LOADING...</div>
             </div>
 
 
@@ -169,7 +169,7 @@ export const Landing = () => {
                             <div>
                                 <div className="text-xs font-mono text-primary tracking-widest mb-2">TEAM // ORGANIZERS</div>
                                 <h2 className="text-4xl font-black italic uppercase">Organizers</h2>
-                                <p className="text-gray-400 mt-2 max-w-2xl">Meet the Hackslash team driving Byteverse — click through to view profiles.</p>
+                                <p className="text-gray-400 mt-2 max-w-2xl">Meet the Hackslash team driving Byteverse</p>
                             </div>
                         </div>
 
