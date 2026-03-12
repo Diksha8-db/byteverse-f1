@@ -163,6 +163,33 @@ export const Landing = () => {
                 </div>
             </main>
 
+            {/* FOSS Hack 2026 – Homepage teaser */}
+            <section className={`relative z-20 max-w-7xl mx-auto px-6 py-12 transition-all duration-1000 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                <Link href="/foss-hack-2026" className="block group">
+                    <div className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 backdrop-blur-md overflow-hidden transition-all duration-300">
+                        <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 font-mono text-neon-cyan text-xs tracking-[0.3em] mb-2">
+                                    <span className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></span>
+                                    EVENT // FOSS UNITED
+                                </div>
+                                <h2 className="text-3xl md:text-4xl font-black italic uppercase tracking-tight mb-2">
+                                    FOSS Hack <span className="text-stroke-white text-transparent">2026</span>
+                                </h2>
+                                <p className="text-gray-400 text-sm md:text-base max-w-2xl">
+                                    India&apos;s largest FOSS hackathon — March 2026. Hybrid event · ₹5L prize pool · Build, contribute, or ship open source. Teams of 1–4.
+                                </p>
+                            </div>
+                            <div className="flex items-center gap-2 text-primary font-bold uppercase text-sm group-hover:underline">
+                                Learn more
+                                <span className="material-icons text-lg">arrow_forward</span>
+                            </div>
+                        </div>
+                        <div className="h-1 w-full bg-gradient-to-r from-primary/50 via-primary to-primary/50"></div>
+                    </div>
+                </Link>
+            </section>
+
                     {/* Organizers Carousel */}
                     <section className="relative z-20 max-w-7xl mx-auto px-6 py-12">
                         <div className="mb-8 flex items-center justify-between">
