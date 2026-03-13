@@ -26,12 +26,12 @@ export default function Organizers() {
 
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 mb-20">
-        <p className="text-xs font-mono text-primary tracking-widest mb-2">
-          TEAM // ORGANIZERS
-        </p>
+        {/* <p className="text-xs font-mono text-primary tracking-widest mb-2">
+          POWERED BY
+        </p> */}
 
         <h2 className="text-5xl md:text-6xl font-black italic uppercase">
-          ORGANIZERS
+          ORGANIZING COMMUNITIES
         </h2>
 
         <p className="text-gray-400 mt-4 max-w-2xl text-lg">
