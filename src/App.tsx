@@ -11,6 +11,7 @@ import { PitCrew } from './pages/PitCrew';
 import { About } from './pages/About';
 import { Gallery } from './pages/Gallery';
 import { Sponsors } from './pages/Sponsors';
+import { FOSSHack2026 } from './pages/FOSSHack2026';
 
 function App() {
   const [location] = useLocation();
@@ -40,6 +41,7 @@ function App() {
             <Route path="/about" component={About} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/sponsors" component={Sponsors} />
+            <Route path="/foss-hack-2026" component={FOSSHack2026} />
 
             {/* Fallback 404 */}
             <Route>
