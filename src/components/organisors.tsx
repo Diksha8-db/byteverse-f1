@@ -46,20 +46,20 @@ export default function Organizers() {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="group relative w-full h-[450px]"
+            className="group relative w-full h-full flex flex-col"
           >
             {/* Aerodynamic Flaps / Winglets (External Add-ons) */}
-            <div className="absolute -top-4 right-12 w-32 h-8 bg-primary/10 skew-x-[45deg] border-t-2 border-r-2 border-primary/50 group-hover:bg-primary/40 group-hover:shadow-[0_0_20px_rgba(255,30,0,0.5)] transition-all duration-300 z-0"></div>
-            <div className="absolute -bottom-4 left-12 w-32 h-8 bg-primary/10 skew-x-[45deg] border-b-2 border-l-2 border-primary/50 group-hover:bg-primary/40 group-hover:shadow-[0_0_20px_rgba(255,30,0,0.5)] transition-all duration-300 z-0"></div>
+            <div className="absolute -top-4 right-12 w-32 h-8 bg-primary/10 skew-x-[45deg] border-t-2 border-r-2 border-primary/50 group-hover:bg-primary/40 group-hover:shadow-[0_0_20px_rgba(255,30,0,0.5)] transition-all duration-300 z-0 pointer-events-none"></div>
+            <div className="absolute -bottom-4 left-12 w-32 h-8 bg-primary/10 skew-x-[45deg] border-b-2 border-l-2 border-primary/50 group-hover:bg-primary/40 group-hover:shadow-[0_0_20px_rgba(255,30,0,0.5)] transition-all duration-300 z-0 pointer-events-none"></div>
 
             {/* Glowing Backdrop for full shape */}
             <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 blur-2xl transition-all duration-500 rounded-3xl pointer-events-none z-0"></div>
 
-            {/* The Outer Clipped Border (Creates the 1px glowing edge path) */}
-            <div className="absolute inset-0 bg-white/20 group-hover:bg-primary transition-colors duration-500 [clip-path:polygon(40px_0,100%_0,100%_calc(100%-40px),calc(100%-40px)_100%,0_100%,0_40px)] z-10 shadow-2xl"></div>
+            {/* The Outer Clipped Border Wrapper */}
+            <div className="relative flex-grow flex flex-col p-[1px] bg-white/20 group-hover:bg-primary transition-colors duration-500 [clip-path:polygon(40px_0,100%_0,100%_calc(100%-40px),calc(100%-40px)_100%,0_100%,0_40px)] z-10 shadow-2xl">
 
-            {/* The Inner Content Container (1px gap for border) */}
-            <div className="absolute inset-[1px] bg-carbon [clip-path:polygon(40px_0,100%_0,100%_calc(100%-40px),calc(100%-40px)_100%,0_100%,0_40px)] z-20 flex flex-col pt-10 pb-8 px-8 md:px-10 overflow-hidden">
+                {/* The Inner Content Container */}
+                <div className="relative flex-grow bg-carbon [clip-path:polygon(40px_0,100%_0,100%_calc(100%-40px),calc(100%-40px)_100%,0_100%,0_40px)] z-20 flex flex-col pt-10 pb-8 px-6 md:px-10 overflow-hidden">
 
               {/* Visual Texture overlays */}
               <div className="absolute inset-0 scanlines opacity-20 pointer-events-none"></div>
@@ -93,12 +93,12 @@ export default function Organizers() {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-400 leading-relaxed text-sm md:text-[15px] font-light flex-grow mt-2 relative">
+                <div className="text-gray-400 leading-relaxed text-sm md:text-[15px] font-light mt-2 mb-6 relative">
                   {org.description}
-                </p>
+                </div>
 
                 {/* Footer / Social Icons */}
-                <div className="flex items-center gap-4 mt-6 pt-5 border-t border-white/5 relative">
+                <div className="mt-auto flex flex-none items-center gap-4 pt-5 border-t border-white/5 relative">
                   <div className="text-[10px] font-mono text-gray-500 tracking-[0.2em] uppercase flex-grow">
                     Telemetry Link
                   </div>
@@ -123,6 +123,7 @@ export default function Organizers() {
                 </div>
               </div>
 
+                </div>
             </div>
           </motion.div>
         ))}
