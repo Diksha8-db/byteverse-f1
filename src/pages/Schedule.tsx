@@ -3,66 +3,57 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 // Hackathon Schedule Data
 const scheduleData = [
     {
-        day: "FRI",
-        date: "MAR 20",
+        day: "SAT",
+        date: "MAR 28",
         events: [
-            { id: 1, time: "TBA", title: "Registration Opens", desc: "Hackathon registration opens online", location: "Online Portal", type: "ops", icon: "how_to_reg" }
-        ]
-    },
-    {
-        day: "WED",
-        date: "MAR 25",
-        events: [
-            { id: 2, time: "TBA", title: "Info Session", desc: "Introductory info session for participants", location: "Online / Live Stream", type: "event", icon: "info" },
-            { id: 3, time: "TBA", title: "PPT Submissions Commence", desc: "Teams may start submitting PPT entries", location: "Submissions Portal", type: "ops", icon: "file_present" }
-        ]
-    },
-    {
-        day: "SUN",
-        date: "APR 05",
-        events: [
-            { id: 4, time: "23:59", title: "PPT Submissions Deadline", desc: "Final deadline for PPT submissions", location: "Submissions Portal", type: "ops", icon: "timer" }
+            { id: 1, time: "09:00 IST", title: "Registration Starts", desc: "Hackathon registration opens on Unstop. Form teams of 2–4 members and register before April 11.", location: "unstop.com", type: "ops", icon: "how_to_reg" }
         ]
     },
     {
         day: "FRI",
-        date: "APR 10",
+        date: "APR 03",
         events: [
-            { id: 5, time: "TBA", title: "Inauguration Ceremony", desc: "Opening & welcome remarks", location: "Main Hall / Stream", type: "event", icon: "event" },
-            { id: 6, time: "09:00", title: "Presentation Rounds", desc: "Teams present their projects", location: "Presentation Halls", type: "race", icon: "groups" },
-            { id: 7, time: "TBA", title: "ByteVerse Registration Closes", desc: "Hackathon registration closes", location: "Online Portal", type: "ops", icon: "how_to_reg" }
+            { id: 2, time: "TBA", title: "Info Session", desc: "Introductory session covering rules, tracks, judging criteria, and Q&A for all registered participants.", location: "Online / Live Stream", type: "event", icon: "info" }
+        ]
+    },
+    {
+        day: "THU",
+        date: "APR 09",
+        events: [
+            { id: 3, time: "10:00 IST", title: "Inaugural Ceremony", desc: "Opening ceremony. Attendance is mandatory for all offline participants. Stream available for online teams.", location: "Main Hall / Live Stream", type: "event", icon: "event" },
+            { id: 4, time: "TBA", title: "Presentation Round", desc: "Shortlisted teams present their idea decks to the judging panel. Offline participants evaluated in-person.", location: "Presentation Halls", type: "race", icon: "groups" },
+            { id: 5, time: "TBA", title: "Guest Speaker", desc: "Special guest speaker session — date confirmed, time to be announced.", location: "Main Hall / Live Stream", type: "event", icon: "mic" }
         ]
     },
     {
         day: "SAT",
         date: "APR 11",
         events: [
-            { id: 8, time: "09:00", title: "Hackathon Commences", desc: "Final registration cut-off", location: "Online Portal", type: "ops", icon: "how_to_reg" }
+            { id: 6, time: "09:00 IST", title: "Registration Ends", desc: "Final deadline for team registration. No new registrations accepted after this time.", location: "unstop.com", type: "ops", icon: "lock_clock" },
+            { id: 7, time: "10:00 IST", title: "Hackathon Starts", desc: "BUILD PHASE BEGINS! 36-hour hackathon kicks off at NIT Patna. GitHub repos must be freshly created after this point.", location: "NIT Patna / Online", type: "race", icon: "rocket_launch" }
         ]
     },
     {
         day: "SUN",
         date: "APR 12",
         events: [
-            { id: 9, time: "10:00", title: "Mid Evaluation", desc: "Mid-event evaluations and mentor check-ins", location: "Evaluation Rooms", type: "event", icon: "preview" },
-
-            { id: 10, time: "20:00", title: "Hackathon Concludes", desc: "Submission deadline and end of build phase", location: "Event Campus & Online", type: "race", icon: "check_circle" },
-
-            { id: 11, time: "23:59", title: "Community Review Window Opens", desc: "Community review & voting period begins", location: "Community Portal", type: "event", icon: "chat" }
+            { id: 8, time: "20:00 IST", title: "Hackathon Ends", desc: "Final submission deadline. Code freeze. All teams must push their final commits to their public GitHub repository.", location: "NIT Patna / Online", type: "race", icon: "check_circle" },
+            { id: 9, time: "20:30 IST", title: "Closing Ceremony", desc: "Wrap-up ceremony with highlights, mentor reflections, and appreciation for all participants.", location: "Main Hall / Live Stream", type: "event", icon: "celebration" },
+            { id: 10, time: "21:00 IST", title: "Community Review Opens", desc: "Community voting period begins. Public can review, explore, and vote on submitted projects.", location: "Community Portal", type: "event", icon: "how_to_vote" }
         ]
     },
     {
-        day: "MON",
-        date: "APR 13",
+        day: "TUE",
+        date: "APR 14",
         events: [
-            { id: 12, time: "20:00", title: "Community Review Window Closes", desc: "End of the community voting window", location: "Community Portal", type: "event", icon: "chat" }
+            { id: 11, time: "21:00 IST", title: "Community Review Closes", desc: "End of community voting window. Final scores compiled by the organizing team.", location: "Community Portal", type: "event", icon: "gavel" }
         ]
     },
     {
-        day: "MON",
-        date: "APR 20",
+        day: "MAY",
+        date: "WEEK 1",
         events: [
-            { id: 13, time: "TBA", title: "Closing Ceremony", desc: "Awards, highlights, and closing remarks", location: "Main Hall / Stream", type: "event", icon: "celebration" }
+            { id: 12, time: "TBA", title: "Result Announcement", desc: "Winners announced! Awards for 1st, 2nd, 3rd place, top all-girls team, and top all-1st-year team.", location: "Online / Social Media", type: "event", icon: "emoji_events" }
         ]
     }
 ];
@@ -158,7 +149,10 @@ export const Schedule = () => {
                 {/* Header - Pit Board Style */}
                 <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-16 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
                     <div className="w-full md:w-auto mb-6 md:mb-0">
-                        <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1">HACKATHON</div>
+                        <div className="text-primary font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
+                            <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
+                            HACKATHON
+                        </div>
                         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
                             Hackathon <span className="text-stroke-white text-transparent">Schedule</span>
                         </h1>
@@ -167,6 +161,30 @@ export const Schedule = () => {
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
                     </div>
+                </div>
+
+                {/* Race Resources */}
+                <div className="flex flex-wrap gap-3 mb-12 justify-center md:justify-start">
+                    <a href="https://drive.google.com/file/d/1dgOf2QOxlISb9TkfMV_Gps0bq2GxM5Xd/view" target="_blank" rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-mono text-xs uppercase tracking-widest font-bold transition-all hover:shadow-[0_0_20px_rgba(255,30,0,0.5)] [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
+                        <span className="material-icons text-sm">description</span>
+                        Rulebook PDF
+                    </a>
+                    <a href="https://unstop.com/hackathons/byteverse-80-hackathon-national-institute-of-technology-nit-patna-1658744" target="_blank" rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/20 hover:border-primary text-white font-mono text-xs uppercase tracking-widest font-bold transition-all [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
+                        <span className="material-icons text-sm">how_to_reg</span>
+                        Register on Unstop
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1i_p3Av-__IVAnjXvC5ZFoUTQmc53lKGh?usp=sharing" target="_blank" rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest font-bold transition-all [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
+                        <span className="material-icons text-sm">slideshow</span>
+                        PPT Template
+                    </a>
+                    <a href="https://discord.com/invite/2ZfsdkTKh" target="_blank" rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/20 hover:border-[#5865F2] text-white font-mono text-xs uppercase tracking-widest font-bold transition-all [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
+                        <span className="material-icons text-sm">forum</span>
+                        Discord
+                    </a>
                 </div>
 
                 {/* Timeline Container */}
@@ -247,7 +265,7 @@ export const Schedule = () => {
                 </div>
 
                 {/* Footer Status */}
-                <div className="mt-24 text-center">
+                <div className="mt-12 text-center">
                     <div className="inline-flex items-center gap-3 text-gray-500 font-mono text-xs uppercase tracking-widest border border-white/10 px-6 py-3 rounded-full bg-black/20">
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         Syncing with Race Control...
