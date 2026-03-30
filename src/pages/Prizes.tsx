@@ -35,20 +35,6 @@ export const Prizes = () => {
                 <div className="w-full max-w-7xl relative flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-6 perspective-1000">
 
                     <TopDownCarCard
-                        rank="P2"
-                        tier="SILVER CLASS"
-                        prize="₹ 7,000"
-                        accentColor="border-gray-400"
-                        glowColor="shadow-[0_0_40px_rgba(156,163,175,0.3)]"
-                        textColor="text-gray-300"
-                        glowBg="bg-gray-100" // Brighter white/gray for glow
-                        carImage="/car-silver.png"
-                        height="h-[560px]"
-                        delay={0.2}
-                        scale={0.85}
-                        perks={["Silver Medal", "Cash Prize", "ByteVerse Swag Kit"]}
-                    />
-                    <TopDownCarCard
                         rank="P1"
                         tier="GOLD CLASS"
                         prize="₹ 10,000"
@@ -61,6 +47,20 @@ export const Prizes = () => {
                         delay={0}
                         isWinner={true}
                         perks={["Gold Trophy", "Cash Prize", "Exclusive Winner Kit"]}
+                    />
+                    <TopDownCarCard
+                        rank="P2"
+                        tier="SILVER CLASS"
+                        prize="₹ 7,000"
+                        accentColor="border-gray-400"
+                        glowColor="shadow-[0_0_40px_rgba(156,163,175,0.3)]"
+                        textColor="text-gray-300"
+                        glowBg="bg-gray-100" // Brighter white/gray for glow
+                        carImage="/car-silver.png"
+                        height="h-[560px]"
+                        delay={0.2}
+                        scale={0.85}
+                        perks={["Silver Medal", "Cash Prize", "ByteVerse Swag Kit"]}
                     />
 
                     <TopDownCarCard
