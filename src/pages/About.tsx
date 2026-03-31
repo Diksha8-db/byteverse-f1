@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import F1CarTicker from '../components/F1CarTicker';
 
 export const About = () => {
     return (
@@ -18,8 +19,8 @@ export const About = () => {
                 >
 
                     {/* Header (Event Style) */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-8 border-b border-white/10 relative">
-                        <div>
+                    <div className="relative flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-10">
+                        <div className="relative z-10">
                             <div className="flex items-center gap-3 mb-2">
                                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                                 <span className="font-mono text-xs text-primary uppercase tracking-[0.2em]">BYTEVERSE // HACKSLASH NITP</span>
@@ -29,14 +30,19 @@ export const About = () => {
                             </h1>
                         </div>
 
-                        <div className="mt-6 md:mt-0 max-w-md text-right md:text-right text-gray-400 font-mono text-xs leading-relaxed hidden md:block">
+                        <div className="mt-6 md:mt-0 max-w-md text-right md:text-right text-gray-400 font-mono text-xs leading-relaxed hidden md:block relative z-10">
                             // ANNUAL HACKATHON <br />
                             // COMMUNITY-DRIVEN // EIGHTH EDITION <br />
                             // BUILD. COLLABORATE. LAUNCH.
                         </div>
 
-                        {/* Decorative Corner */}
-                        <div className="absolute -bottom-[1px] -right-[1px] w-4 h-4 border-b border-r border-primary"></div>
+                        {/* Animated ticker bottom divider */}
+                        <div className="absolute bottom-0 left-0 w-full h-[56px] flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                            <div className="absolute w-full h-[1px] bg-white/10 top-1/2 -translate-y-1/2"></div>
+                            <div className="w-full absolute inset-0">
+                                <F1CarTicker speed={2} height={56} transparent />
+                            </div>
+                        </div>
                     </div>
 
                     <p className="text-xl md:text-2xl text-gray-300 max-w-4xl font-light leading-relaxed mb-8 border-l-4 border-primary pl-6">

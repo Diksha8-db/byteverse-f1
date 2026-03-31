@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import Organizers from '../components/organisors';
+import F1CarTicker from '../components/F1CarTicker';
 
 // Custom Date and Time for the Countdown
 const TARGET_DATE = new Date('2026-04-11T10:00:00'); // ByteVerse: April 11, 2026, 10:00 AM
@@ -12,6 +13,7 @@ const organizers = [
     { name: 'Ravi Upadhyay', position: 'Vice President', linkedin: 'https://www.linkedin.com/in/raviupadhyay23', github: 'https://github.com/upadhyayravi023', image: '/ravi.jpg' },
     { name: 'Ashutosh Panda', position: 'Administrative & AI/ML Lead', linkedin: 'https://www.linkedin.com/in/ashutosh-panda-63a478380', github: 'https://github.com/zen-zap', image: '/ashu.jpg' },
     { name: 'Vasu Choudhari', position: 'Technical Lead / Secretary', linkedin: 'https://www.linkedin.com/in/vasu-choudhari', github: 'https://www.github.com/vasu-here', image: '/vasu.jpg' },
+    { name: 'Gaurav Suman', position: 'Flutter Lead (GDG)', linkedin: 'https://www.linkedin.com/in/gaurav-suman-baa84328a', github: 'https://www.github.com/gaurav-33', image: '/gaurav.jpg' },
     { name: 'Shivendu Kumar', position: 'Event Lead (Patna Campus)', linkedin: 'https://www.linkedin.com/in/shivendu-kumar-5971112b9?utm_source=share_via&utm_content=profile&utm_medium=member_android', github: 'https://github.com/ShivenduKmr', image: '/shivendu.jpg' },
     { name: 'Sanjeet Raj', position: 'Web Lead', linkedin: 'https://www.linkedin.com/in/Sanjeetraj40/', github: 'https://github.com/Sanjeet4567', image: '/sanjeet.jpeg' },
     { name: 'Suryakant Acharya', position: 'Co-Lead (Gray Interface)', linkedin: 'https://www.linkedin.com/in/suryakant-acharya-8b09a628a', github: 'https://github.com/Suryakant2112', image: '/surya.jpg' },
@@ -106,6 +108,11 @@ export const Landing = () => {
                     ))}
                 </div>
                 <div className="mt-8 font-mono text-xs text-gray-500 tracking-[0.5em] animate-pulse">BYTEVERSE LOADING...</div>
+
+                {/* Car animation during loading */}
+                <div className="absolute bottom-0 left-0 right-0">
+                    <F1CarTicker speed={3} height={100} />
+                </div>
             </div>
 
 
@@ -204,7 +211,7 @@ export const Landing = () => {
                         <div className="flex gap-6 items-stretch">
                             {/* Mobile Spacer */}
                             <div className="w-6 shrink-0 md:hidden" />
-                            
+
                             {organizers.map((org, i) => (
                                 <OrganizerCard key={org.github || i} organizer={org} index={i} />
                             ))}
@@ -231,9 +238,16 @@ export const Landing = () => {
 
             {/* Bottom Telemetry & Ticker */}
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-                <div className="max-w-7xl mx-auto w-full">
-                    {/* Telemetry Grid */}
-                    <div className="flex flex-col items-center justify-between md:flex-row divide-x divide-white/5 border-b border-white/5">
+                <div className="max-w-7xl mx-auto w-full relative">
+
+                    {/* Background Animation Layer - Spans the entire grid width behind the text */}
+                    <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center opacity-100 md:opacity-50">
+                        <F1CarTicker speed={2} />
+                    </div>
+
+                    {/* Telemetry Grid - Needs relative positioning to sit on top of the canvas */}
+                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5 border-b border-white/5 w-full bg-black/20 md:bg-transparent">
+
                         {/* Location */}
                         <div className="p-4 md:p-6 flex flex-col items-start group hover:bg-white/5 transition-colors">
                             <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-1">
@@ -244,27 +258,35 @@ export const Landing = () => {
                                 <span className="text-lg md:text-xl font-bold font-display italic">NIT PATNA</span>
                             </div>
                         </div>
+
                         {/* Countdown */}
                         <div className="p-4 md:p-6 flex flex-col items-start group hover:bg-white/5 transition-colors">
-                            <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1">T-Minus</span>
-                            <div className="flex items-center gap-2 font-mono text-neon-cyan">
+                            <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-1">
+                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                T-Minus
+                            </span>
+                            <div className="flex items-center gap-2 font-mono text-neon-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]">
                                 <span className="text-lg md:text-xl font-bold">
                                     {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                                 </span>
                             </div>
                         </div>
-                        {/* Status */}
-                        <div className="p-4 md:p-6 flex flex-col items-center justify-center group hover:bg-white/5 transition-colors bg-white/5">
-                            <div className="text-[10px] font-mono text-green-500 animate-pulse tracking-widest mb-1">SYSTEM OPTIMAL</div>
-                            <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
-                                <div className="h-full bg-green-500 w-[95%]"></div>
+
+                        {/* Status Block */}
+                        <div className="p-4 md:p-6 flex flex-col items-start group hover:bg-white/5 transition-colors">
+                            <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-1">
+                                <span className="w-1 h-1 bg-primary rounded-full"></span>
+                                System Status
+                            </span>
+                            <div className="flex items-center gap-2">
+                                <span className="text-lg md:text-xl font-bold font-display italic text-neon-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]">
+                                    OPTIMAL
+                                </span>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
-                {/* Scrolling Ticker */}
-
             </footer>
         </div>
     );
@@ -276,12 +298,12 @@ const OrganizerCard = ({ organizer, index }: { organizer: any, index: number }) 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="min-w-[220px] w-[220px] md:w-[260px] h-[340px] group relative p-[1px] shrink-0 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,30,0,0.4)] bg-white/10 hover:bg-primary [clip-path:polygon(20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%,0_20px)]"
+            className="min-w-[220px] w-[220px] md:w-[260px] h-auto group relative p-[1px] shrink-0 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,30,0,0.4)] bg-white/10 hover:bg-primary [clip-path:polygon(20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%,0_20px)]"
         >
             <div className="relative w-full h-full bg-gradient-to-b from-[#141418] via-[#0e0e12] to-[#0a0a0c] [clip-path:polygon(20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%,0_20px)] overflow-hidden flex flex-col">
 
-                {/* === Photo Section (top 65%) === */}
-                <div className="relative h-[65%] overflow-hidden shrink-0 flex items-end justify-center">
+                {/* === Photo Section === */}
+                <div className="relative aspect-[3/4] w-full overflow-hidden shrink-0 flex items-end justify-center">
                     {/* Radial red glow behind person */}
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_center,_#ff1e0018_0%,_#0a0a0c_70%)] pointer-events-none"></div>
                     <img
@@ -289,7 +311,7 @@ const OrganizerCard = ({ organizer, index }: { organizer: any, index: number }) 
                         alt={organizer.name}
                         loading="lazy"
                         decoding="async"
-                        className="relative z-10 w-full h-full object-contain object-bottom transform group-hover:scale-105 transition-transform duration-700"
+                        className="relative z-10 w-full h-full object-scale-down object-bottom transform group-hover:scale-105 transition-transform duration-700"
                     />
                     {/* Bottom blend into info panel */}
                     <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c] to-transparent z-20"></div>

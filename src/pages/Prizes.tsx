@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import F1CarTicker from '../components/F1CarTicker';
 
 
 
@@ -15,8 +16,8 @@ export const Prizes = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
 
                 {/* 2. Header */}
-                <div className="w-full flex flex-col md:flex-row items-center md:items-end justify-between mb-24 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
-                    <div className="w-full md:w-auto mb-6 md:mb-0">
+                <div className="relative w-full flex flex-col md:flex-row items-center md:items-end justify-between mb-24 pb-10 text-center md:text-left">
+                    <div className="w-full md:w-auto mb-6 md:mb-0 relative z-10">
                         <div className="text-primary font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
                             <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                             PODIUM: CONSTRUCTORS
@@ -26,9 +27,17 @@ export const Prizes = () => {
                         </h1>
                     </div>
 
-                    <div className="w-full md:w-auto flex flex-col items-center md:items-end">
+                    <div className="w-full md:w-auto flex flex-col items-center md:items-end relative z-10">
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
+                    </div>
+
+                    {/* Animated ticker bottom divider */}
+                    <div className="absolute bottom-0 left-0 w-full h-[56px] flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="absolute w-full h-[1px] bg-white/10 top-1/2 -translate-y-1/2"></div>
+                        <div className="w-full absolute inset-0">
+                            <F1CarTicker speed={2} height={56} transparent />
+                        </div>
                     </div>
                 </div>
 
@@ -175,7 +184,7 @@ export const Prizes = () => {
 
 // --- SUB-COMPONENT: Top-Down Car Card ---
 const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, glowBg, carImage, height, delay, isWinner, perks, scale = 1, winnerColor = "yellow" }: any) => {
-    
+
     // Color mapping for winner effects
     const winnerTheme = {
         yellow: { laser: "bg-yellow-400", trophy: "text-yellow-500" },
@@ -240,7 +249,7 @@ const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, 
                         <div>
                             <div className="text-gray-500 text-[10px] uppercase tracking-widest font-mono mb-1">Total Prize</div>
                             <div className={`text-4xl font-bold font-mono tracking-tight text-white flex items-baseline gap-1`}>
-                                <span className="font-sans text-3xl font-normal opacity-80 -mr-1">₹</span>
+                                <span className="font-sans text-3xl font-normal opacity-80 mr-1">₹</span>
                                 <span>{prize.replace('₹', '').trim()}</span>
                             </div>
                         </div>

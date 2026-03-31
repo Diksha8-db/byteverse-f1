@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import crewData from '../data/pit-crew';
+import F1CarTicker from '../components/F1CarTicker';
 
 export const PitCrew = () => {
     const [activeCategory, setActiveCategory] = useState("All");
@@ -24,8 +25,8 @@ export const PitCrew = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6">
 
                 {/* Header */}
-                <div className="mb-16 flex flex-col md:flex-row justify-between items-center md:items-end border-b border-white/10 pb-8 text-center md:text-left gap-6">
-                    <div>
+                <div className="relative mb-16 flex flex-col md:flex-row justify-between items-center md:items-end pb-10 text-center md:text-left gap-6">
+                    <div className="relative z-10">
                         <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
                             <span className="flex h-2 w-2 relative">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -39,7 +40,7 @@ export const PitCrew = () => {
                     </div>
 
                     {/* Filter Tabs */}
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-end">
+                    <div className="flex flex-wrap gap-2 justify-center md:justify-end relative z-10">
                         {categories.map(cat => (
                             <button
                                 key={cat}
@@ -52,6 +53,14 @@ export const PitCrew = () => {
                                 {cat}
                             </button>
                         ))}
+                    </div>
+
+                    {/* Animated ticker bottom divider */}
+                    <div className="absolute bottom-0 left-0 w-full h-[56px] flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="absolute w-full h-[1px] bg-white/10 top-1/2 -translate-y-1/2"></div>
+                        <div className="w-full absolute inset-0">
+                            <F1CarTicker speed={2} height={56} transparent />
+                        </div>
                     </div>
                 </div>
 

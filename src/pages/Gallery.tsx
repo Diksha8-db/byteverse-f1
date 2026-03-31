@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import F1CarTicker from '../components/F1CarTicker';
 
 const galleryImages = [
     { id: 1, src: "/img1.jpg" },
@@ -64,8 +65,8 @@ export const Gallery = () => {
             <main className="relative z-10 max-w-7xl mx-auto px-6">
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 pb-8 border-b border-white/10 text-center md:text-left">
-                    <div className="mb-6 md:mb-0">
+                <div className="relative flex flex-col md:flex-row justify-between items-center md:items-end mb-16 pb-10 text-center md:text-left">
+                    <div className="mb-6 md:mb-0 relative z-10">
                         <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
                             <span className="material-icons text-f1-red text-sm animate-pulse">videocam</span>
                             <span className="font-mono text-xs text-f1-red uppercase tracking-widest">Media Centre</span>
@@ -75,7 +76,13 @@ export const Gallery = () => {
                         </h1>
                     </div>
 
-                    {/* No categories — displaying all images */}
+                    {/* Animated ticker bottom divider */}
+                    <div className="absolute bottom-0 left-0 w-full h-[56px] flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="absolute w-full h-[1px] bg-white/10 top-1/2 -translate-y-1/2"></div>
+                        <div className="w-full absolute inset-0">
+                            <F1CarTicker speed={2} height={56} transparent />
+                        </div>
+                    </div>
                 </div>
 
                 {/* Masonry Grid */}

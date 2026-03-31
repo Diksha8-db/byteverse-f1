@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-
+import F1CarTicker from '../components/F1CarTicker';
 // Hackathon Schedule Data
 const scheduleData = [
     {
@@ -147,8 +147,8 @@ export const Schedule = () => {
             <main className="relative z-30 max-w-7xl mx-auto px-6">
 
                 {/* Header - Pit Board Style */}
-                <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-16 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
-                    <div className="w-full md:w-auto mb-6 md:mb-0">
+                <div className="relative flex flex-col md:flex-row items-center md:items-end justify-between mb-16 pb-10 text-center md:text-left">
+                    <div className="w-full md:w-auto mb-6 md:mb-0 relative z-10">
                         <div className="text-primary font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
                             <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
                             HACKATHON
@@ -157,9 +157,17 @@ export const Schedule = () => {
                             Hackathon <span className="text-stroke-white text-transparent">Schedule</span>
                         </h1>
                     </div>
-                    <div className="w-full md:w-auto flex flex-col items-center md:items-end">
+                    <div className="w-full md:w-auto flex flex-col items-center md:items-end relative z-10">
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
+                    </div>
+
+                    {/* Animated ticker bottom divider */}
+                    <div className="absolute bottom-0 left-0 w-full h-[56px] flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="absolute w-full h-[1px] bg-white/10 top-1/2 -translate-y-1/2"></div>
+                        <div className="w-full absolute inset-0">
+                            <F1CarTicker speed={2} height={56} transparent />
+                        </div>
                     </div>
                 </div>
 

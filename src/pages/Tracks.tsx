@@ -1,3 +1,5 @@
+import F1CarTicker from '../components/F1CarTicker';
+
 const tracks = [
     {
         id: "01",
@@ -125,8 +127,9 @@ export const Tracks = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
                 {/* Header - Pit Board Style */}
-                <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-10 border-b border-white/10 pb-6 text-center md:text-left">
-                    <div className="mb-4 md:mb-0">
+                <div className="relative flex flex-col md:flex-row items-center md:items-end justify-between mb-10 pb-10 text-center md:text-left">
+
+                    <div className="mb-4 md:mb-0 relative z-10">
                         <div className="text-primary font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
                             <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
                             SECTOR: CLASSIFIED
@@ -135,10 +138,22 @@ export const Tracks = () => {
                             Track <span className="text-stroke-white text-transparent">Selection</span>
                         </h1>
                     </div>
-                    <div className="hidden md:block text-right">
+
+                    <div className="hidden md:block text-right relative z-10">
                         <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
                         <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
                     </div>
+
+                    {/* Ticker serving as the animated bottom divider for the page title */}
+                    <div className="absolute bottom-0 left-0 w-full h-[56px] flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                        {/* The visual track line */}
+                        <div className="absolute w-full h-[1px] bg-white/10 top-1/2 -translate-y-1/2"></div>
+                        {/* The animated car */}
+                        <div className="w-full absolute inset-0">
+                            <F1CarTicker speed={2} height={56} transparent />
+                        </div>
+                    </div>
+
                 </div>
 
                 {/* Rulebook + Registration CTAs */}
@@ -178,7 +193,7 @@ export const Tracks = () => {
                         <div className="h-[1px] w-12 bg-neon-cyan"></div>
                         <h2 className="text-xl font-bold tracking-[0.2em] uppercase italic text-neon-cyan/80">
                             Theme <span className="text-white">Sectors</span>
-                        </h2> 
+                        </h2>
                         <div className="h-[1px] flex-grow bg-gradient-to-r from-neon-cyan/30 to-transparent"></div>
                     </div>
 
